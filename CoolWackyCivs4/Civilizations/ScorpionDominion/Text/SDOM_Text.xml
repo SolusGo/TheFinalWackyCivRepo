@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameData>
+  <Language_en_US>
+    <Row Tag="TXT_KEY_SDOM_CIV"><Text>The Scorpion Dominion</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_SHORT"><Text>Scorpion Dominion</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_ADJECTIVE"><Text>Scorpion</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_MOTTO"><Text>Strength Above Numbers</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_OVERLORD"><Text>The Scorpion Overlord</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_TRAIT"><Text>Survival of the Strongest</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_TRAIT_HELP"><Text>Open the Overlord's War Council to designate eligible Warrior-to-Mechanized Infantry units as Ascendants. Marathon cost is 120 Gold plus 60 per era after Ancient, with a 6-turn shared cooldown. Gold and cooldown scale by game speed.[NEWLINE][NEWLINE]Capacity starts at 2 and rises by 1 in Medieval, Industrial and Atomic. Owning any Molting Chamber adds 1, up to 6 total. Ascendants keep their mutations when capacity falls.[NEWLINE][NEWLINE]Designation gives +10% defensive Combat Strength. From Classical, at 30 XP, permanently choose +15% attacking Combat Strength or +20% ranged defence. From Industrial, a specialised warrior with 100 XP becomes Apex automatically, gaining +10% Combat Strength, +5 HP when healing in friendly territory, and +2 Science in the current capital.[NEWLINE][NEWLINE]Existing XP counts. Mutations cost no XP and survive eligible upgrades. Loss or transfer ends that warrior's progression. Human players only.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_DAWN"><Text>From beneath the ancient earth emerged a civilisation unlike any the world had witnessed. Where lesser creatures relied upon overwhelming numbers, the Scorpion Dominion embraced a different truth: strength was not inherited, but earned.[NEWLINE][NEWLINE]Through countless generations of struggle, its warriors developed hardened carapaces, devastating pincers and an unwavering instinct for survival. The greatest among them became Ascendants, living monuments to the Dominion's relentless pursuit of perfection.[NEWLINE][NEWLINE]Mighty Scorpion Overlord, your warriors await your command. Will you guide them through the trials of evolution? Will your chosen Ascendants endure the passing of ages and become the perfect predators of a new world?[NEWLINE][NEWLINE]Let empires rise with armies beyond counting. Let their banners darken the horizon.[NEWLINE][NEWLINE]Prove that strength shall always prevail over numbers.[NEWLINE][NEWLINE]Can you build a civilisation that will stand the test of time?</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CIV_PEDIA"><Text>The Dominion raises elite line infantry through individual evolution. Train veterans, choose offensive or defensive mutations, and keep Apex warriors alive to support research in the capital.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_HISTORY_HEADING_1"><Text>The Dominion Below</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_HISTORY_TEXT_1"><Text>Beneath the black sands, the Dominion carves its cities from volcanic glass. Its warriors measure their worth in molts endured and battles survived. Behind the walls of the Molting Chambers, keepers record the adaptations of each warrior as carefully as they record the names of the fallen.[NEWLINE][NEWLINE]The scorpion faction of the 2009 browser game Arachnid Wars 1.5 inspired the Dominion. Survival of the Strongest and its Ascendant progression were designed for this Civilization V mod.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_OVERLORD_PEDIA"><Text>The Overlord is a colossal emperor scorpion whose patient rule rewards veterans and punishes threats to the Dominion.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_OVERLORD_HISTORY_HEADING_1"><Text>The Keeper of the Molts</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_OVERLORD_HISTORY_TEXT_1"><Text>The Overlord remembers every warrior who stood beside the throne when the Obsidian Nest was young. In council he listens in silence, weighing the cost of each engagement. A veteran who returns alive to fight again is worth more to him than a legion promised by some boastful envoy.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_EMPEROR"><Text>Emperor Scorpion</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_EMPEROR_HELP"><Text>Swordsman replacement with 15 Combat Strength, 2 Movement, 75 base Production cost and a requirement of 1 Iron. Imperial Exoskeleton grants +15% defence against ranged attacks and survives upgrades.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_EMPEROR_STRATEGY"><Text>Put Emperor Scorpions on the frontline against enemy ranged units. Designate a promising veteran and choose Obsidian Carapace to add another 20 percentage points of ranged defence. Any eligible Emperor Scorpion may instead specialise in attack.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_EMPEROR_PEDIA"><Text>The Emperor Scorpion is bred for the close fighting of the fortress galleries. Overlapping plates protect its joints when missiles strike from above. Its ordinary exoskeleton endures throughout its career, independently of Ascendant mutations.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CHAMBER"><Text>Molting Chamber</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CHAMBER_HELP"><Text>Armory replacement that retains its training experience and adds +2 Science and +1 Production. Owning at least one increases the Dominion's Ascendant capacity by 1.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CHAMBER_STRATEGY"><Text>Build the first Molting Chamber to open an Ascendant slot. Further chambers train troops and improve city yields. If the final chamber is lost, existing Ascendants keep their mutations and new designations wait until enough capacity frees up.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CHAMBER_PEDIA"><Text>Veterans train among amber-lit galleries while armour keepers study empty exoskeletons in the chambers below. The keepers maintain one empire-wide register of Ascendant warriors, regardless of how many chambers the Dominion builds.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_ASCENDANT"><Text>Ascendant Scorpion</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_ASCENDANT_HELP"><Text>+10% defensive Combat Strength. Stage I of Ascendant evolution. Occupies one Ascendant slot and survives eligible upgrades.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_PINCERS"><Text>Crushing Pincers</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_PINCERS_HELP"><Text>+15% Combat Strength when attacking. Permanent offensive Stage II mutation, exclusive with Obsidian Carapace.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CARAPACE"><Text>Obsidian Carapace</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CARAPACE_HELP"><Text>+20% defence against ranged attacks. Permanent defensive Stage II mutation, exclusive with Crushing Pincers.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_APEX"><Text>Apex Evolution</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_APEX_HELP"><Text>+10% Combat Strength and +5 additional HP when healing in friendly territory. While alive and owned by the human Dominion, contributes +2 Science in the current capital.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_EXOSKELETON"><Text>Imperial Exoskeleton</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_EXOSKELETON_HELP"><Text>+15% defence against ranged attacks. Stays with the unit through upgrades and is independent of Ascendant evolution.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_APEX_SCIENCE"><Text>Apex Research</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_NOTICE_ASCENDANT"><Text>The First Molt</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_NOTICE_ASCENDANT_BODY"><Text>A warrior has shed its former shell and risen as an Ascendant of the Dominion.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_NOTICE_PINCERS"><Text>Crushing Pincers</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_NOTICE_PINCERS_BODY"><Text>Through battle and bloodshed, an Ascendant has developed a devastating new offensive adaptation.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_NOTICE_CARAPACE"><Text>Obsidian Carapace</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_NOTICE_CARAPACE_BODY"><Text>An Ascendant's exoskeleton has hardened into an almost impenetrable shell.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_NOTICE_APEX"><Text>The Perfect Predator</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_NOTICE_APEX_BODY"><Text>After centuries of struggle, one of the Dominion's warriors has achieved Apex Evolution.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_NOTICE_FALLEN"><Text>An Ascendant Has Fallen</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_NOTICE_FALLEN_BODY"><Text>One of the Overlord's chosen warriors has fallen. Its legacy shall be preserved in the Hall of Fallen Ascendants.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_GREETING_1"><Text>You stand before the Overlord of the Dominion. Speak carefully. Strength is respected here; weakness is not.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_DECLARE_1"><Text>Bring forth your armies. My Ascendants have grown weary of waiting.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_ATTACKED_1"><Text>You mistake patience for weakness. Your mistake shall be your final lesson.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_DEFEATED_1"><Text>Even the strongest carapace must eventually break. But somewhere beneath the earth, another shall rise.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_TITLE"><Text>The Overlord's War Council</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_LAUNCHER"><Text>War Council</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CLOSE"><Text>Close</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CANCEL"><Text>Cancel</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CONFIRM"><Text>Confirm</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_TAB_ROSTER"><Text>Ascendant Roster</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_TAB_DESIGNATION"><Text>Designation</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_TAB_EVOLUTION"><Text>Evolution</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_TAB_HALL"><Text>Hall of Fallen Ascendants</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_READY"><Text>Ready</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_TURNS"><Text>{1_Num} turns</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_TREASURY"><Text>[ICON_GOLD] {1_Num}   ·   Cost {2_Num}   ·   {3_Text}</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CAPACITY"><Text>Ascendants {1_Num}/{2_Num}</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_OVER_CAPACITY"><Text>[COLOR_NEGATIVE_TEXT]Over capacity {1_Num}/{2_Num}[ENDCOLOR]</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_SCIENCE"><Text>Apex {1_Num}   ·   [ICON_RESEARCH] +{2_Num}</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_UNKNOWN_UNIT"><Text>Unknown unit</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_UNKNOWN_TURN"><Text>unknown</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_NO_BRANCH"><Text>Unchosen</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_DESTROYER"><Text>Apex Destroyer</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_GUARDIAN"><Text>Apex Guardian</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_NEXT_BRANCH"><Text>{1_Num}/30 XP · Classical required</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_NEXT_APEX"><Text>{1_Num}/100 XP · Industrial required</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_COMPLETE_APEX"><Text>Evolution complete</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_UNIT_DETAIL"><Text>{1_Text}[NEWLINE]Stage {2_Num} · {3_Num}/{4_Num} HP · {5_Num} XP[NEWLINE]Branch: {6_Text}[NEWLINE][NEWLINE]{7_Text}</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_LOCATE"><Text>Locate unit</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_INSPECT"><Text>Inspect</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_DESIGNATE"><Text>Designate</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_COMPLETED"><Text>Completed</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_EXCLUDED"><Text>Excluded</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_LOCKED"><Text>Locked</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_AVAILABLE"><Text>Available</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_PERMANENT"><Text>Permanent after selection.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_REQ_BRANCH"><Text>Classical Era · {1_Num}/30 XP</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_REQ_APEX"><Text>Industrial Era · Stage II · {1_Num}/100 XP</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_PINCERS_BRIEF"><Text>+15% Combat Strength when attacking.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CARAPACE_BRIEF"><Text>+20% defence against ranged attacks.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_APEX_BRIEF"><Text>+10% strength · +5 friendly healing · +2 Science</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_BRANCH_WARNING"><Text>Choosing this mutation permanently excludes the other branch.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CHOOSE_PINCERS"><Text>Choose Crushing Pincers</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CHOOSE_CARAPACE"><Text>Choose Obsidian Carapace</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CONFIRM_BRANCH"><Text>Give {1_Text} the {2_Text} mutation? This choice is permanent and excludes the other branch.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CONFIRM_DESIGNATION"><Text>Designate {1_Text} for {2_Num} Gold? This permanently occupies an Ascendant slot while the unit lives in the Dominion.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_DESIGNATE_TIP"><Text>Designate for {1_Num} Gold.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_DESIGNATION_PRICE"><Text>{1_Num} Gold per warrior</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_DESIGNATION_DETAIL"><Text>Choose a warrior from the eligible infantry roster. Each designation starts the shared cooldown and immediately grants the First Molt.[NEWLINE][NEWLINE]Existing experience, health and movement carry through unchanged. Ascendants can evolve without spending experience.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_HALL_TOTAL"><Text>{1_Num} recorded removals</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_HALL_DETAIL"><Text>The names of lost and retired Ascendants are kept here.[NEWLINE][NEWLINE]Detailed records: {1_Num}[NEWLINE]Earlier entries archived: {2_Num}</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_HALL_ROW"><Text>{1_Text} · Stage {2_Num} · {3_Num} XP · {4_Text}</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_HALL_DATES"><Text>Designated {1_Text} · Removed {2_Num} · {3_Text}</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_REASON_COMBAT"><Text>Combat death</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_REASON_FALLEN"><Text>Fallen, cause unconfirmed</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_REASON_TRANSFER"><Text>Transferred</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_REASON_CAPTURE"><Text>Captured</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_REASON_REMOVED"><Text>Removed, cause unconfirmed</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_REASON_CONTROL"><Text>Human command ended</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CANDIDATE_ROW"><Text>{1_Text} · {2_Num}/{3_Num} HP · {4_Num} XP · [ICON_GOLD] {5_Num}</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_ROSTER_ROW"><Text>{1_Text} · {2_Text} · {3_Num}/{4_Num} HP · {5_Num} XP</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_ROSTER_PROGRESS"><Text>Stage {1_Num} · {2_Text}</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_EMPTY_ROSTER"><Text>No Ascendants</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_EMPTY_DETAIL"><Text>Use Designation to induct an eligible infantry unit.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_ROSTER_FOOT"><Text>Select an Ascendant to see its branch, progress and current promotions.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_DESIGNATION_FOOT"><Text>Eligible units retain their experience. Designation does not heal or restore movement.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_TREE_FOOT"><Text>Mutations use current XP as a requirement. Normal promotions remain available.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_HALL_FOOT"><Text>The Hall is a memorial. Its records have no gameplay effect.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_ERR_TURN"><Text>Actions are available during the human Dominion's active turn.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_ERR_UNIT"><Text>The selected unit is no longer available or eligible.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_ERR_ASCENDANT"><Text>This unit is already an Ascendant.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_ERR_CAPACITY"><Text>Ascendant capacity reached. Free a slot before designating another unit.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_ERR_COOLDOWN"><Text>Designation cooldown is active.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_ERR_GOLD"><Text>Insufficient Gold.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_ERR_CLASSICAL"><Text>Requires the Classical Era.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_ERR_XP"><Text>Requires at least 30 XP.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_ERR_BRANCH"><Text>A Stage II branch is already selected or unavailable.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_ERR_PRICE_CHANGED"><Text>The designation price changed. Select the unit again to review the new price.</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CITY_1"><Text>The Obsidian Nest</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CITY_2"><Text>Emperor's Burrow</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CITY_3"><Text>Amber Citadel</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CITY_4"><Text>Ironclaw</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CITY_5"><Text>Deathstinger</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CITY_6"><Text>The Molting Grounds</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CITY_7"><Text>Black Carapace</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CITY_8"><Text>Venomspire</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CITY_9"><Text>The Golden Pincers</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CITY_10"><Text>Stinger's End</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CITY_11"><Text>The Eternal Burrow</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CITY_12"><Text>Apex Hollow</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CITY_13"><Text>The Last Carapace</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CITY_14"><Text>Throne of the Overlord</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CITY_15"><Text>The Silent Stinger</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CITY_16"><Text>Carapace Bastion</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CITY_17"><Text>The Black Sands</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CITY_18"><Text>Venomhold</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CITY_19"><Text>Imperial Hollow</Text></Row>
+    <Row Tag="TXT_KEY_SDOM_CITY_20"><Text>The Unbroken Shell</Text></Row>
+  </Language_en_US>
+  <Diplomacy_Responses>
+    <Row LeaderType="LEADER_SDOM_OVERLORD" ResponseType="RESPONSE_FIRST_GREETING" Response="TXT_KEY_SDOM_GREETING_%" Bias="1" />
+    <Row LeaderType="LEADER_SDOM_OVERLORD" ResponseType="RESPONSE_DECLAREWAR" Response="TXT_KEY_SDOM_DECLARE_%" Bias="1" />
+    <Row LeaderType="LEADER_SDOM_OVERLORD" ResponseType="RESPONSE_DECLARE_WAR" Response="TXT_KEY_SDOM_DECLARE_%" Bias="1" />
+    <Row LeaderType="LEADER_SDOM_OVERLORD" ResponseType="RESPONSE_ATTACKED_WARMONGER" Response="TXT_KEY_SDOM_ATTACKED_%" Bias="1" />
+    <Row LeaderType="LEADER_SDOM_OVERLORD" ResponseType="RESPONSE_ATTACKED_STRONG_WARMONGER" Response="TXT_KEY_SDOM_ATTACKED_%" Bias="1" />
+    <Row LeaderType="LEADER_SDOM_OVERLORD" ResponseType="RESPONSE_ATTACKED_WEAK_WARMONGER" Response="TXT_KEY_SDOM_ATTACKED_%" Bias="1" />
+    <Row LeaderType="LEADER_SDOM_OVERLORD" ResponseType="RESPONSE_DEFEATED" Response="TXT_KEY_SDOM_DEFEATED_%" Bias="1" />
+  </Diplomacy_Responses>
+</GameData>

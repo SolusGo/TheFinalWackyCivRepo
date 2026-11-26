@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Context Name="SDOM_Council">
+  <Script file="SDOM_Council.lua" />
+  <GridButton ID="Launcher" Anchor="R,C" Offset="14,-24" Size="182,34" Style="BaseButton"
+      Font="TwCenMT16" String="TXT_KEY_SDOM_LAUNCHER" ConsumeMouse="1" Hidden="1" />
+  <Container ID="Panel" Anchor="C,C" Size="904,624" ConsumeMouse="1" Hidden="1">
+    <Image Anchor="L,T" Size="904,624" Texture="SDOM_Panel.dds" />
+    <Image ID="Insignia" Anchor="L,T" Offset="20,14" Size="48,48" />
+    <Label ID="Title" Anchor="L,T" Offset="82,14" Font="TwCenMT30" ColorSet="Beige_Black_Alpha" />
+    <Label ID="Motto" Anchor="L,T" Offset="84,45" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" />
+    <GridButton ID="Close" Anchor="L,T" Offset="764,21" Size="118,30" Style="BaseButton" Font="TwCenMT16" String="TXT_KEY_SDOM_CLOSE" />
+    <Label ID="Treasury" Anchor="L,T" Offset="28,83" Font="TwCenMT20" ColorSet="Beige_Black_Alpha" />
+    <Label ID="Capacity" Anchor="L,T" Offset="361,83" Font="TwCenMT20" ColorSet="Beige_Black_Alpha" />
+    <Label ID="Science" Anchor="L,T" Offset="653,83" Font="TwCenMT20" ColorSet="Beige_Black_Alpha" />
+    <GridButton ID="Tab1" Anchor="L,T" Offset="20,120" Size="208,28" Style="BaseButton" Font="TwCenMT16" String="TXT_KEY_SDOM_TAB_ROSTER" />
+    <GridButton ID="Tab2" Anchor="L,T" Offset="238,120" Size="208,28" Style="BaseButton" Font="TwCenMT16" String="TXT_KEY_SDOM_TAB_DESIGNATION" />
+    <GridButton ID="Tab3" Anchor="L,T" Offset="456,120" Size="208,28" Style="BaseButton" Font="TwCenMT16" String="TXT_KEY_SDOM_TAB_EVOLUTION" />
+    <GridButton ID="Tab4" Anchor="L,T" Offset="674,120" Size="208,28" Style="BaseButton" Font="TwCenMT16" String="TXT_KEY_SDOM_TAB_HALL" />
+    <ScrollPanel ID="Scroll" Anchor="L,T" Offset="20,170" Size="508,394" Vertical="1" AutoScrollBar="1">
+      <Stack ID="List" Anchor="L,T" StackGrowth="Bottom" Padding="5" />
+      <ScrollBar Anchor="R,C" AnchorSide="I,I" Offset="0,0" Length="394" Style="VertSlider" />
+    </ScrollPanel>
+    <Grid Anchor="L,T" Offset="542,170" Size="340,394" Style="Grid9DetailFive140">
+      <Image ID="DetailIcon" Anchor="L,T" Offset="14,10" Size="48,48" />
+      <Label ID="DetailTitle" Anchor="L,T" Offset="71,10" Font="TwCenMT22" ColorSet="Beige_Black_Alpha" WrapWidth="250" />
+      <Label ID="DetailType" Anchor="L,T" Offset="72,38" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" WrapWidth="248" />
+      <Label ID="DetailBody" Anchor="L,T" Offset="15,70" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" WrapWidth="308" />
+      <Container ID="UnitDetail" Anchor="L,T" Size="340,394" Hidden="1">
+        <Image ID="Badge1" Anchor="L,T" Offset="15,179" Size="32,32" />
+        <Image ID="Badge2" Anchor="L,T" Offset="60,179" Size="32,32" />
+        <Image ID="Badge3" Anchor="L,T" Offset="105,179" Size="32,32" />
+        <Image ID="Badge4" Anchor="L,T" Offset="150,179" Size="32,32" />
+        <Image ID="Badge5" Anchor="L,T" Offset="195,179" Size="32,32" />
+        <GridButton ID="Locate" Anchor="L,T" Offset="15,224" Size="135,32" Style="BaseButton" Font="TwCenMT16" String="TXT_KEY_SDOM_LOCATE" />
+        <GridButton ID="Evolve" Anchor="L,T" Offset="156,224" Size="166,32" Style="BaseButton" Font="TwCenMT16" String="TXT_KEY_SDOM_TAB_EVOLUTION" />
+      </Container>
+      <Container ID="Tree" Anchor="L,T" Size="340,394" Hidden="1">
+        <Image ID="TreeArt1" Anchor="L,T" Offset="15,65" Size="32,32" />
+        <Label ID="TreeName1" Anchor="L,T" Offset="55,63" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" WrapWidth="266" />
+        <Label ID="TreeBody1" Anchor="L,T" Offset="55,83" Font="TwCenMT14" ColorSet="Beige_Black_Alpha" WrapWidth="266" />
+        <Image ID="TreeArt2" Anchor="L,T" Offset="15,140" Size="32,32" />
+        <Label ID="TreeName2" Anchor="L,T" Offset="55,138" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" WrapWidth="266" />
+        <Label ID="TreeBody2" Anchor="L,T" Offset="55,158" Font="TwCenMT14" ColorSet="Beige_Black_Alpha" WrapWidth="266" />
+        <Image ID="TreeArt3" Anchor="L,T" Offset="15,215" Size="32,32" />
+        <Label ID="TreeName3" Anchor="L,T" Offset="55,213" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" WrapWidth="266" />
+        <Label ID="TreeBody3" Anchor="L,T" Offset="55,233" Font="TwCenMT14" ColorSet="Beige_Black_Alpha" WrapWidth="266" />
+        <Image ID="TreeArt4" Anchor="L,T" Offset="15,290" Size="32,32" />
+        <Label ID="TreeName4" Anchor="L,T" Offset="55,288" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" WrapWidth="266" />
+        <Label ID="TreeBody4" Anchor="L,T" Offset="55,308" Font="TwCenMT14" ColorSet="Beige_Black_Alpha" WrapWidth="266" />
+        <GridButton ID="Pincers" Anchor="L,T" Offset="55,175" Size="242,22" Style="BaseButton" Font="TwCenMT16" String="TXT_KEY_SDOM_CHOOSE_PINCERS" />
+        <GridButton ID="Carapace" Anchor="L,T" Offset="55,250" Size="242,22" Style="BaseButton" Font="TwCenMT16" String="TXT_KEY_SDOM_CHOOSE_CARAPACE" />
+      </Container>
+    </Grid>
+    <Label ID="Footer" Anchor="L,T" Offset="23,585" Font="TwCenMT17" ColorSet="Beige_Black_Alpha" WrapWidth="856" />
+    <Container ID="Confirm" Anchor="C,C" Size="904,624" ConsumeMouse="1" Hidden="1">
+      <Grid Anchor="C,C" Size="540,196" ConsumeMouse="1" Style="Grid9DetailFive140">
+        <Label ID="ConfirmTitle" Anchor="L,T" Offset="22,19" Font="TwCenMT24" ColorSet="Beige_Black_Alpha" WrapWidth="496" />
+        <Label ID="ConfirmBody" Anchor="L,T" Offset="22,57" Font="TwCenMT18" ColorSet="Beige_Black_Alpha" WrapWidth="490" />
+        <GridButton ID="Cancel" Anchor="L,T" Offset="22,146" Size="230,30" Style="BaseButton" Font="TwCenMT16" String="TXT_KEY_SDOM_CANCEL" />
+        <GridButton ID="Accept" Anchor="L,T" Offset="285,146" Size="232,30" Style="BaseButton" Font="TwCenMT16" String="TXT_KEY_SDOM_CONFIRM" />
+      </Grid>
+    </Container>
+  </Container>
+  <Instance Name="SDOM_CouncilRow">
+    <Grid ID="Root" Anchor="L,T" Size="484,80" Style="Grid9DetailFive140">
+      <Image ID="Icon" Anchor="L,T" Offset="10,14" Size="48,48" />
+      <Label ID="Name" Anchor="L,T" Offset="68,7" Font="TwCenMT20" ColorSet="Beige_Black_Alpha" WrapWidth="300" />
+      <Label ID="Summary" Anchor="L,T" Offset="68,31" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" WrapWidth="403" />
+      <Label ID="Progress" Anchor="L,T" Offset="68,52" Font="TwCenMT14" ColorSet="Beige_Black_Alpha" WrapWidth="403" />
+      <GridButton ID="Action" Anchor="L,T" Offset="376,6" Size="96,24" Style="BaseButton" Font="TwCenMT16" />
+    </Grid>
+  </Instance>
+</Context>

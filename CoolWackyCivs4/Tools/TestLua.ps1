@@ -51,11 +51,13 @@ $previousDirectory = [Environment]::CurrentDirectory
 [Environment]::CurrentDirectory = $root
 try {
     [ArachnidLua51]::luaL_openlibs($state)
-    $files = Get-ChildItem -LiteralPath (Join-Path $root 'Civilizations/ArachnidEmpire') -Filter '*.lua' -Recurse
+    $files = Get-ChildItem -LiteralPath (Join-Path $root 'Civilizations') -Filter '*.lua' -Recurse
     foreach ($file in $files) { Invoke-LuaFile $file.FullName -CompileOnly }
     Write-Output "Lua 5.1 syntax passed for $($files.Count) gameplay and UI files."
     Invoke-LuaFile (Join-Path $PSScriptRoot 'TestRules.lua')
     Write-Output 'Arachnid gameplay simulations passed.'
+    Invoke-LuaFile (Join-Path $PSScriptRoot 'TestScorpion.lua')
+    Write-Output 'Scorpion Dominion gameplay simulations passed.'
 } finally {
     [Environment]::CurrentDirectory = $previousDirectory
     [ArachnidLua51]::lua_close($state)

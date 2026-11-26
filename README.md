@@ -1,6 +1,10 @@
 # FinalWackyFolder
 
-Each mod has its own folder and ModBuddy project file. [Cool Wacky Civs 4](CoolWackyCivs4/CoolWackyCivs4.civ5proj) introduces [The Arachnid Empire](CoolWackyCivs4/Civilizations/ArachnidEmpire/Documentation/README.md) for Brave New World with standalone Community Patch v151.
+Each mod has its own folder and ModBuddy project file. [Cool Wacky Civs 4](CoolWackyCivs4/CoolWackyCivs4.civ5proj) includes [The Arachnid Empire](CoolWackyCivs4/Civilizations/ArachnidEmpire/Documentation/README.md) and [The Scorpion Dominion](CoolWackyCivs4/Civilizations/ScorpionDominion/Documentation/README.md) for Brave New World with standalone Community Patch v151.
+
+## Install the package
+
+Copy the built `Cool Wacky Civs 4 (v 1).civ5mod` into Civilization V's `MODS` folder and enable it alongside standalone Community Patch v151.
 
 ## Build with ModBuddy
 

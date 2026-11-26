@@ -18,5 +18,6 @@ if (!(Test-Path -LiteralPath $Civ5Path -PathType Container)) {
     throw "Civilization V installation directory not found: $Civ5Path"
 }
 $project = Join-Path $PSScriptRoot '../CoolWackyCivs4.civ5proj'
-& $msbuild $project /nologo /t:Deploy "/p:Configuration=$Configuration" "/p:Civ5Path=$Civ5Path" "/p:Civ5UserPath=$Civ5UserPath"
+$target = if ($Configuration -eq 'Package Only') { 'Package' } else { 'Deploy' }
+& $msbuild $project /nologo "/t:$target" "/p:Configuration=$Configuration" "/p:Civ5Path=$Civ5Path" "/p:Civ5UserPath=$Civ5UserPath"
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

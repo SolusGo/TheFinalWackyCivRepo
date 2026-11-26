@@ -3,8 +3,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
     <Name>Cool Wacky Civs 4</Name>
-    <Teaser>Lead the Arachnid Empire and evolve through warfare.</Teaser>
-    <Description>The Arachnid Empire for Civilization V: Brave New World and Community Patch v151.</Description>
+    <Teaser>Lead the Arachnid Empire or the Scorpion Dominion.</Teaser>
+    <Description>The Arachnid Empire and the Scorpion Dominion for Civilization V: Brave New World and Community Patch v151.</Description>
     <Authors>SolusGo</Authors>
     <Homepage>https://github.com/SolusGo/TheFinalWackyCivRepo</Homepage>
     <Guid>4e2d7f10-235f-4323-95ec-6bda1a25d27a</Guid>
@@ -46,6 +46,26 @@
         <Type>UpdateDatabase</Type>
         <FileName>Civilizations/ArachnidEmpire/Text/ARACHNID_Text.xml</FileName>
       </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>Civilizations/ScorpionDominion/SQL/SDOM_Civilization.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>Civilizations/ScorpionDominion/SQL/SDOM_Uniques.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>Civilizations/ScorpionDominion/XML/SDOM_Atlases.xml</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>Civilizations/ScorpionDominion/Text/SDOM_Text.xml</FileName>
+      </Action>
     </ModActions>
     <ModContent>
       <Content>
@@ -53,6 +73,12 @@
         <Name>Arachnid Empire</Name>
         <Description>Gameplay, save state, and the Arachnid Empire interface.</Description>
         <FileName>Civilizations/ArachnidEmpire/UI/ARACHNID_Console.xml</FileName>
+      </Content>
+      <Content>
+        <Type>InGameUIAddin</Type>
+        <Name>Scorpion Dominion</Name>
+        <Description>Ascendant gameplay, save state, and the Overlord's War Council.</Description>
+        <FileName>Civilizations/ScorpionDominion/UI/SDOM_Council.xml</FileName>
       </Content>
     </ModContent>
     <ModDependencies>
@@ -292,6 +318,132 @@
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
     <Content Include="Civilizations/ArachnidEmpire/XML/ARACHNID_Atlases.xml">
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Alpha128.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Alpha16.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Alpha24.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Alpha256.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Alpha32.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Alpha45.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Alpha48.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Alpha64.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Alpha80.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Civ128.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Civ16.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Civ24.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Civ256.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Civ32.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Civ45.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Civ48.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Civ64.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Civ80.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Dawn.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Diplomacy.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Flag32.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_LeaderScene.xml">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Map.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Mutation128.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Mutation16.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Mutation24.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Mutation256.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Mutation32.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Mutation45.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Mutation48.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Mutation64.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Mutation80.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Art/SDOM_Panel.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Lua/SDOM_Events.lua">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Lua/SDOM_Rules.lua">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Lua/SDOM_State.lua">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/SQL/SDOM_Civilization.sql">
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/SQL/SDOM_Uniques.sql">
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/Text/SDOM_Text.xml">
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/UI/SDOM_Council.lua">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/UI/SDOM_Council.xml">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ScorpionDominion/XML/SDOM_Atlases.xml">
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
   </ItemGroup>

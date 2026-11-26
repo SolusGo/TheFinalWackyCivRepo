@@ -1,0 +1,35 @@
+# The Scorpion Dominion
+
+The Scorpion Dominion is a human-playable civilization for Civilization V: Brave New World and standalone Community Patch v151 (5.4.6). The Scorpion Overlord rules from The Obsidian Nest. The faction's ambition is Domination, with Science as a secondary pursuit. Its inspiration is the scorpion faction from Arachnid Wars 1.5.
+
+## Install and play
+
+Copy the built `Cool Wacky Civs 4 (v 1).civ5mod` into Civ V's `MODS` folder. Enable **(1) Community Patch** v151 and **Cool Wacky Civs 4** from the Mods menu, then start a modded game as The Scorpion Dominion. Open **War Council** from the right-side launcher or the Additional Information menu.
+
+**Survival of the Strongest** gives veterans three evolutionary stages alongside their ordinary promotions.
+
+| Stage | Requirements | Effects |
+| --- | --- | --- |
+| The First Molt | Designate base-game line infantry or an Emperor Scorpion in the War Council | +10% defensive Combat Strength |
+| Crushing Pincers | Classical Era, 30 current XP and a permanent choice of this branch | +15% Combat Strength on attack |
+| Obsidian Carapace | Classical Era, 30 current XP and a permanent choice of this branch | +20% Combat Strength against ranged attacks |
+| Apex Evolution | Industrial Era, 100 current XP and a Stage II branch | +10% Combat Strength, +5 HP on eligible friendly-territory healing, +2 Science in the current capital |
+
+Designation costs 120 Gold in Ancient on Marathon, rising by 60 each era to 540 in Information. The shared cooldown is six turns on Marathon. The game's verified `GameSpeeds.TrainPercent` scales both values against Marathon's 300, with nearest-integer rounding and a minimum one-turn cooldown. Standard starts at 40 Gold with a two-turn cooldown. Prior training and combat XP both count. Designation and mutations leave XP, HP and movement intact.
+
+The Dominion begins with two Ascendant slots. Medieval, Industrial and Atomic each add one. The first owned Molting Chamber adds another. Molting Chambers replace Armories, preserve their cost, maintenance, prerequisite and experience effects, and add +2 Science and +1 Production. After losing the final chamber, all living Ascendants retain their stages. New designations resume when occupancy drops below capacity.
+
+The **Emperor Scorpion** has 15 strength, 2 movement and a base cost of 75 Production. Iron Working and one Iron are required. It follows the Swordsman upgrade path and starts with **Imperial Exoskeleton**, giving +15% ranged defence even after upgrade. The unit uses the compatible native Swordsman battlefield model. Its portrait and flag are custom.
+
+## Implementation report
+
+- **Database and registration.** Two SQL files create the civilization, leader, personality, trait, city order, uniques, mutations and six hidden research buildings. The Armory and Swordsman come from the active database baselines. Evolution uses `DefenseMod`, `AttackMod`, `RangedDefenseMod`, `CombatPercent` and `FriendlyHealChange`. The four evolutionary promotions use `LostOnGifting` and all five promotions use `CannotBeChosen=1` and `LostWithUpgrade=0`. The project adds four database actions and one InGameUIAddin. All Lua, scene XML and textures are registered in VFS.
+- **State and upgrades.** `SDOM_State.lua` stores a separate per-player value through `Modding.OpenSaveData`. It holds the next designation turn, stable serial numbers, unit IDs and creation turns, designation history, recent snapshots and up to 200 detailed memorial entries. The lifetime count includes older archived entries. The unit's own promotions determine stage and branch. `UnitCreated` invalidates stale IDs, even for same-turn reuse. `UnitConverted` moves the serial and evolutionary mutations to the new unit after the native copy and before the old unit's prekill. XP follows the native upgrade.
+- **Removal and science.** `UnitPrekill` snapshots the removal. Matching `UnitKilledInCombat` identifies confirmed combat deaths, and `UnitCaptured` or `UnitConverted` identifies supported captures or transfers. `GameCoreUpdateEnd` handles deferred post-copy sanitation and checks the small tracked roster for removals and Apex eligibility. It reconciles six +2 Science buildings from the living Apex count, clearing former capitals and pausing if there is no capital. Native no-capture and unbuildable flags, plus `CityCanConstruct`, protect the yield buildings. The War Council reads actual capital building counts for its Science display.
+- **City, era and load handling.** `CityCaptureComplete`, `CapitalChanged`, `CityRazed` and `PlayerCityFounded` reconcile capital changes. `CityConstructed` and `CitySoldBuilding` refresh chamber capacity, which always reads current city ownership. `TeamSetEra` and the core update track era-qualified Apex units. The owner-turn fallback and load pass reconcile surviving units and buildings. The load pass suppresses transition notices. Foreign roster sanitation runs once when loading a game with the Dominion enabled in a player slot. Regular processing uses the Dominion's own roster and individual new-unit events.
+- **War Council.** The isolated add-in has a scrollable roster and detail panel, designation candidates and readable eligibility messages, an evolution tree with permanent branch confirmation, and the Hall of Fallen Ascendants. The rules file revalidates the selected unit, turn, cost, cooldown, capacity and mutations at action time. The panel reads simulation state when opened or refreshed.
+- **Source and artwork.** The new files are under `Civilizations/ScorpionDominion` and use the `SDOM_` prefix. `Text` contains English interface, diplomacy, notifications, Civilopedia and Dawn of Man strings. `Art` contains the original leader/diplomacy scene, 1024×768 Dawn of Man scene, map, unit portrait and flag, civilization insignia, Molting Chamber medal, five mutation medals, War Council and Hall insignia and panel. See [Artwork](ARTWORK.md) for generation and format details. The Arachnid Empire files and gameplay are independent of these changes.
+- **Delivery and validation.** The repo's package tool builds the ready-to-install archive. The validation script checks both civilizations and the extracted manifest, and the Lua test tool compiles both add-ins and runs separate simulations. See [Testing](TESTING.md) for verified checks and live coverage.
+- **Known limits.** The War Council supplies designation as the supported entry point. Native callbacks do not reliably distinguish voluntary disbanding and some delayed city-state gifts from other removals. Those entries carry an unconfirmed cause. Native event ordering and save integration have offline coverage and still need in-game verification. The existing project supports single-player only.
+
+[Community Patch v151 event declarations](https://github.com/LoneGazebo/Community-Patch-DLL/blob/dcb33a654cd9e8efb038a0733b4025e19cbcd8ba/CvGameCoreDLL_Expansion2/CustomMods.h) · [Unit conversion, healing and promotion code](https://github.com/LoneGazebo/Community-Patch-DLL/blob/dcb33a654cd9e8efb038a0733b4025e19cbcd8ba/CvGameCoreDLL_Expansion2/CvUnit.cpp)

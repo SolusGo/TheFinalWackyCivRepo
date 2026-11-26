@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameData>
+  <IconTextureAtlases>
+    <Row><Atlas>SDOM_CIV_ATLAS</Atlas><IconSize>16</IconSize><Filename>SDOM_Civ16.dds</Filename><IconsPerRow>2</IconsPerRow><IconsPerColumn>2</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_CIV_ATLAS</Atlas><IconSize>24</IconSize><Filename>SDOM_Civ24.dds</Filename><IconsPerRow>2</IconsPerRow><IconsPerColumn>2</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_CIV_ATLAS</Atlas><IconSize>32</IconSize><Filename>SDOM_Civ32.dds</Filename><IconsPerRow>2</IconsPerRow><IconsPerColumn>2</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_CIV_ATLAS</Atlas><IconSize>45</IconSize><Filename>SDOM_Civ45.dds</Filename><IconsPerRow>2</IconsPerRow><IconsPerColumn>2</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_CIV_ATLAS</Atlas><IconSize>48</IconSize><Filename>SDOM_Civ48.dds</Filename><IconsPerRow>2</IconsPerRow><IconsPerColumn>2</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_CIV_ATLAS</Atlas><IconSize>64</IconSize><Filename>SDOM_Civ64.dds</Filename><IconsPerRow>2</IconsPerRow><IconsPerColumn>2</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_CIV_ATLAS</Atlas><IconSize>80</IconSize><Filename>SDOM_Civ80.dds</Filename><IconsPerRow>2</IconsPerRow><IconsPerColumn>2</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_CIV_ATLAS</Atlas><IconSize>128</IconSize><Filename>SDOM_Civ128.dds</Filename><IconsPerRow>2</IconsPerRow><IconsPerColumn>2</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_CIV_ATLAS</Atlas><IconSize>256</IconSize><Filename>SDOM_Civ256.dds</Filename><IconsPerRow>2</IconsPerRow><IconsPerColumn>2</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_ALPHA_ATLAS</Atlas><IconSize>16</IconSize><Filename>SDOM_Alpha16.dds</Filename><IconsPerRow>1</IconsPerRow><IconsPerColumn>1</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_ALPHA_ATLAS</Atlas><IconSize>24</IconSize><Filename>SDOM_Alpha24.dds</Filename><IconsPerRow>1</IconsPerRow><IconsPerColumn>1</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_ALPHA_ATLAS</Atlas><IconSize>32</IconSize><Filename>SDOM_Alpha32.dds</Filename><IconsPerRow>1</IconsPerRow><IconsPerColumn>1</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_ALPHA_ATLAS</Atlas><IconSize>45</IconSize><Filename>SDOM_Alpha45.dds</Filename><IconsPerRow>1</IconsPerRow><IconsPerColumn>1</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_ALPHA_ATLAS</Atlas><IconSize>48</IconSize><Filename>SDOM_Alpha48.dds</Filename><IconsPerRow>1</IconsPerRow><IconsPerColumn>1</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_ALPHA_ATLAS</Atlas><IconSize>64</IconSize><Filename>SDOM_Alpha64.dds</Filename><IconsPerRow>1</IconsPerRow><IconsPerColumn>1</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_ALPHA_ATLAS</Atlas><IconSize>80</IconSize><Filename>SDOM_Alpha80.dds</Filename><IconsPerRow>1</IconsPerRow><IconsPerColumn>1</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_ALPHA_ATLAS</Atlas><IconSize>128</IconSize><Filename>SDOM_Alpha128.dds</Filename><IconsPerRow>1</IconsPerRow><IconsPerColumn>1</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_ALPHA_ATLAS</Atlas><IconSize>256</IconSize><Filename>SDOM_Alpha256.dds</Filename><IconsPerRow>1</IconsPerRow><IconsPerColumn>1</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_MUTATION_ATLAS</Atlas><IconSize>16</IconSize><Filename>SDOM_Mutation16.dds</Filename><IconsPerRow>4</IconsPerRow><IconsPerColumn>2</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_MUTATION_ATLAS</Atlas><IconSize>24</IconSize><Filename>SDOM_Mutation24.dds</Filename><IconsPerRow>4</IconsPerRow><IconsPerColumn>2</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_MUTATION_ATLAS</Atlas><IconSize>32</IconSize><Filename>SDOM_Mutation32.dds</Filename><IconsPerRow>4</IconsPerRow><IconsPerColumn>2</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_MUTATION_ATLAS</Atlas><IconSize>45</IconSize><Filename>SDOM_Mutation45.dds</Filename><IconsPerRow>4</IconsPerRow><IconsPerColumn>2</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_MUTATION_ATLAS</Atlas><IconSize>48</IconSize><Filename>SDOM_Mutation48.dds</Filename><IconsPerRow>4</IconsPerRow><IconsPerColumn>2</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_MUTATION_ATLAS</Atlas><IconSize>64</IconSize><Filename>SDOM_Mutation64.dds</Filename><IconsPerRow>4</IconsPerRow><IconsPerColumn>2</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_MUTATION_ATLAS</Atlas><IconSize>80</IconSize><Filename>SDOM_Mutation80.dds</Filename><IconsPerRow>4</IconsPerRow><IconsPerColumn>2</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_MUTATION_ATLAS</Atlas><IconSize>128</IconSize><Filename>SDOM_Mutation128.dds</Filename><IconsPerRow>4</IconsPerRow><IconsPerColumn>2</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_MUTATION_ATLAS</Atlas><IconSize>256</IconSize><Filename>SDOM_Mutation256.dds</Filename><IconsPerRow>4</IconsPerRow><IconsPerColumn>2</IconsPerColumn></Row>
+    <Row><Atlas>SDOM_FLAG_ATLAS</Atlas><IconSize>32</IconSize><Filename>SDOM_Flag32.dds</Filename><IconsPerRow>1</IconsPerRow><IconsPerColumn>1</IconsPerColumn></Row>
+  </IconTextureAtlases>
+</GameData>

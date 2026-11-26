@@ -9,6 +9,7 @@ from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 CIV = ROOT / "Civilizations" / "ArachnidEmpire"
+DOMINION = ROOT / "Civilizations" / "ScorpionDominion"
 GUID = "4e2d7f10-235f-4323-95ec-6bda1a25d27a"
 CP_GUID = "d1b6328c-ff44-4b0d-aad7-c657f83610cd"
 NS = {"m": "http://schemas.microsoft.com/developer/msbuild/2003"}
@@ -27,17 +28,20 @@ def source():
         path = item.attrib["Include"]
         assert path not in registrations and "/" in path and (ROOT / path).is_file(), path
         registrations[path] = findtext(item, "m:ImportIntoVFS").lower() == "true"
-    gameplay = {p.relative_to(ROOT).as_posix() for p in CIV.rglob("*")
+    gameplay = {p.relative_to(ROOT).as_posix() for civ in (CIV, DOMINION) for p in civ.rglob("*")
                 if p.is_file() and "Documentation" not in p.parts}
     assert gameplay == registrations.keys(), (gameplay - registrations.keys(), registrations.keys() - gameplay)
     actions = [findtext(node, "m:FileName") for node in project.findall(".//m:ModActions/m:Action", NS)]
-    assert len(actions) == len(set(actions)) == 4
+    assert len(actions) == len(set(actions)) == 8
     assert all(not registrations[path] for path in actions)
     assert all(imported for path, imported in registrations.items() if path not in actions)
     addins = [findtext(node, "m:FileName") for node in project.findall(".//m:ModContent/m:Content", NS)]
-    assert len(addins) == 1 and registrations[addins[0]] and addins[0].endswith("ARACHNID_Console.xml")
-    ui = ET.parse(ROOT / addins[0])
-    assert ui.find("./Script").attrib["file"] == "ARACHNID_Console.lua"
+    assert [Path(addin).name for addin in addins] == ["ARACHNID_Console.xml", "SDOM_Council.xml"]
+    for addin in addins:
+        assert registrations[addin]
+        ui = ET.parse(ROOT / addin)
+        script = ui.find("./Script").attrib["file"]
+        assert registrations[Path(addin).with_name(script).as_posix()]
     cp, = [node for node in project.findall(".//m:ModDependencies/m:Association", NS)
            if findtext(node, "m:Id") == CP_GUID]
     assert findtext(cp, "m:MinVersion") == findtext(cp, "m:MaxVersion") == "151"
@@ -55,9 +59,30 @@ def source():
                 assert key + "_HEADING_1" in keys and key + "_TEXT_1" in keys
             else:
                 assert key in keys, (path.name, key)
-    for path in CIV.rglob("*.xml"):
-        ET.parse(path)
+    dominion_locale()
+    runtime_names = [Path(path).name.lower() for path in registrations]
+    assert len(runtime_names) == len(set(runtime_names))
+    for civ in (CIV, DOMINION):
+        for path in civ.rglob("*.xml"):
+            ET.parse(path)
     return registrations, actions, addins
+
+
+def dominion_locale():
+    language = ET.parse(DOMINION / "Text" / "SDOM_Text.xml")
+    rows = language.findall("./Language_en_US/Row")
+    keys = {row.attrib["Tag"] for row in rows}
+    assert len(rows) == len(keys)
+    for path in [*DOMINION.rglob("*.sql"), *DOMINION.rglob("*.xml")]:
+        if path.name == "SDOM_Text.xml":
+            continue
+        for key in re.findall(r"TXT_KEY_SDOM_[A-Z0-9_]+", path.read_text(encoding="utf8")):
+            assert key in keys or key + "_HEADING_1" in keys and key + "_TEXT_1" in keys, (path, key)
+    for row in language.findall("./Diplomacy_Responses/Row"):
+        assert row.attrib["Response"].replace("%", "1") in keys
+    for path in DOMINION.rglob("*.lua"):
+        for key in re.findall(r'"((?:ERR|REASON)_[A-Z_]+)"', path.read_text(encoding="utf8")):
+            assert "TXT_KEY_SDOM_" + key in keys, (path, key)
 
 
 def database(cache, actions):
@@ -120,23 +145,77 @@ def database(cache, actions):
         for name in ranged:
             row = one("SELECT Domain, RangedCombat, Range, PrereqTech FROM Units WHERE Type=?", "UNIT_" + name)
             assert row[0] == "DOMAIN_LAND" and row[1] > 0 and row[2] > 0 and row[3]
+        dominion_database(db, one)
         print("BNW + Community Patch database validation passed.")
 
 
+def dominion_database(db, one):
+    civ = "CIVILIZATION_SCORPION_DOMINION"
+    unit = "UNIT_SDOM_EMPEROR_SCORPION"
+    building = "BUILDING_SDOM_MOLTING_CHAMBER"
+    assert one("SELECT Playable, AIPlayable FROM Civilizations WHERE Type=?", civ) == (1, 0)
+    assert one("SELECT LeaderheadType FROM Civilization_Leaders WHERE CivilizationType=?", civ) == ("LEADER_SDOM_OVERLORD",)
+    assert one("SELECT TraitType FROM Leader_Traits WHERE LeaderType='LEADER_SDOM_OVERLORD'") == ("TRAIT_SDOM_SURVIVAL",)
+    cities = db.execute("SELECT CityName FROM Civilization_CityNames WHERE CivilizationType=? ORDER BY rowid", (civ,))
+    assert [name for name, in cities] == [f"TXT_KEY_SDOM_CITY_{i}" for i in range(1, 21)]
+    assert one("SELECT UnitClassType, UnitType FROM Civilization_UnitClassOverrides WHERE CivilizationType=?", civ) == ("UNITCLASS_SWORDSMAN", unit)
+    assert one("SELECT BuildingClassType, BuildingType FROM Civilization_BuildingClassOverrides WHERE CivilizationType=?", civ) == ("BUILDINGCLASS_ARMORY", building)
+    assert one("SELECT Combat, Moves, Cost, PrereqTech FROM Units WHERE Type=?", unit) == (15, 2, 75, "TECH_IRON_WORKING")
+    assert one("SELECT ResourceType, Cost FROM Unit_ResourceQuantityRequirements WHERE UnitType=?", unit) == ("RESOURCE_IRON", 1)
+    assert one("SELECT PromotionType FROM Unit_FreePromotions WHERE UnitType=? AND PromotionType LIKE 'PROMOTION_SDOM_%'", unit) == ("PROMOTION_SDOM_EXOSKELETON",)
+    assert one("SELECT UnitClassType FROM Unit_ClassUpgrades WHERE UnitType=?", unit) == ("UNITCLASS_LONGSWORDSMAN",)
+    for kind in ("WARRIOR", "SWORDSMAN", "LONGSWORDSMAN", "MUSKETMAN", "RIFLEMAN",
+                 "GREAT_WAR_INFANTRY", "INFANTRY", "MECHANIZED_INFANTRY"):
+        assert one("SELECT Class, Domain, RangedCombat FROM Units WHERE Type=?", "UNIT_" + kind) == ("UNITCLASS_" + kind, "DOMAIN_LAND", 0)
+    for table, column, fields in (
+        ("Buildings", "Type", "Cost, GoldMaintenance, PrereqTech, BuildingClass"),
+        ("Building_DomainFreeExperiences", "BuildingType", "DomainType, Experience"),
+        ("Building_ClassesNeededInCity", "BuildingType", "BuildingClassType"),
+    ):
+        query = f"SELECT {fields} FROM {table} WHERE {column}=? ORDER BY {fields}"
+        assert db.execute(query, (building,)).fetchall() == db.execute(query, ("BUILDING_ARMORY",)).fetchall()
+    assert db.execute("SELECT YieldType, Yield FROM Building_YieldChanges WHERE BuildingType=? ORDER BY Yield", (building,)).fetchall() == [("YIELD_PRODUCTION", 1), ("YIELD_SCIENCE", 2)]
+    for suffix, values in {
+        "ASCENDANT": (10, 0, 0, 0, 0, 1),
+        "PINCERS": (0, 15, 0, 0, 0, 1),
+        "CARAPACE": (0, 0, 20, 0, 0, 1),
+        "APEX": (0, 0, 0, 10, 5, 1),
+        "EXOSKELETON": (0, 0, 15, 0, 0, 0),
+    }.items():
+        query = """SELECT DefenseMod, AttackMod, RangedDefenseMod, CombatPercent, FriendlyHealChange,
+                          LostOnGifting, CannotBeChosen, LostWithUpgrade FROM UnitPromotions WHERE Type=?"""
+        assert one(query, "PROMOTION_SDOM_" + suffix) == (*values, 1, 0)
+    for slot in range(1, 7):
+        dummy = f"BUILDING_SDOM_APEX_{slot}"
+        assert one("SELECT Cost, FaithCost, NeverCapture, ConquestProb, ShowInPedia, IsDummy FROM Buildings WHERE Type=?", dummy) == (-1, -1, 1, 0, 0, 1)
+        assert one("SELECT YieldType, Yield FROM Building_YieldChanges WHERE BuildingType=?", dummy) == ("YIELD_SCIENCE", 2)
+    for kind, value in (("MARATHON", 300), ("STANDARD", 100), ("EPIC", 150), ("QUICK", 67)):
+        assert one("SELECT TrainPercent FROM GameSpeeds WHERE Type=?", "GAMESPEED_" + kind) == (value,)
+    for option in ("EVENTS_UNIT_PREKILL", "EVENTS_UNIT_CREATED", "EVENTS_UNIT_CONVERTS", "EVENTS_UNIT_CAPTURE",
+                   "EVENTS_CITY", "EVENTS_CITY_CAPITAL", "EVENTS_NEW_ERA"):
+        assert one("SELECT Value FROM CustomModOptions WHERE Name=?", option) == (1,)
+
+
 def assets():
-    atlases = ET.parse(CIV / "XML" / "ARACHNID_Atlases.xml")
+    for civ, prefix in ((CIV, "ARACHNID"), (DOMINION, "SDOM")):
+        atlas_assets(civ, prefix)
+    print("DDS references and dimensions passed.")
+
+
+def atlas_assets(civ, prefix):
+    atlases = ET.parse(civ / "XML" / f"{prefix}_Atlases.xml")
     for row in atlases.findall("./IconTextureAtlases/Row"):
         size = int(row.findtext("IconSize"))
         width, height = (size * int(row.findtext(field)) for field in ("IconsPerRow", "IconsPerColumn"))
-        asset = CIV / "Art" / row.findtext("Filename")
+        asset = civ / "Art" / row.findtext("Filename")
         with asset.open("rb") as handle:
             header = handle.read(128)
         assert header[:4] == b"DDS " and struct.unpack_from("<II", header, 12) == (height, width), asset.name
-    for name, size in {"Dawn": (1024, 768), "Diplomacy": (1280, 960), "Map": (360, 410),
-                       "Panel": (888, 608), "Tree": (848, 388)}.items():
-        header = (CIV / "Art" / f"ARACHNID_{name}.dds").read_bytes()[:128]
+    sizes = {"Dawn": (1024, 768), "Diplomacy": (1280, 960), "Map": (360, 410)}
+    sizes.update({"Panel": (888, 608), "Tree": (848, 388)} if civ == CIV else {"Panel": (904, 624)})
+    for name, size in sizes.items():
+        header = (civ / "Art" / f"{prefix}_{name}.dds").read_bytes()[:128]
         assert header[:4] == b"DDS " and struct.unpack_from("<II", header, 12)[::-1] == size, name
-    print("DDS references and dimensions passed.")
 
 
 def package(folder, registrations, actions, addins):
