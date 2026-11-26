@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Deploy" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
+    <Name>Cool Wacky Civs 4</Name>
+    <Teaser>The fourth installment in the Cool Wacky Civs series.</Teaser>
+    <Description>A Civilization V mod project for Cool Wacky Civs 4.</Description>
+    <Authors>SolusGo</Authors>
+    <Homepage>https://github.com/SolusGo/TheFinalWackyCivRepo</Homepage>
+    <Guid>4e2d7f10-235f-4323-95ec-6bda1a25d27a</Guid>
+    <ProjectGuid>{D945A80A-4E05-4479-AD9F-46FBD36F7C21}</ProjectGuid>
+    <ModVersion>1</ModVersion>
+    <SafeName>Cool Wacky Civs 4</SafeName>
+    <AssemblyName>CoolWackyCivs4</AssemblyName>
+    <RootNamespace>CoolWackyCivs4</RootNamespace>
+    <Stability>Alpha</Stability>
+    <AffectsSavedGames>true</AffectsSavedGames>
+    <MinCompatibleSaveVersion>0</MinCompatibleSaveVersion>
+    <SupportsSinglePlayer>true</SupportsSinglePlayer>
+    <SupportsMultiplayer>false</SupportsMultiplayer>
+    <SupportsHotSeat>false</SupportsHotSeat>
+    <SupportsMac>false</SupportsMac>
+    <ReloadAudioSystem>false</ReloadAudioSystem>
+    <ReloadLandmarkSystem>false</ReloadLandmarkSystem>
+    <ReloadStrategicViewSystem>false</ReloadStrategicViewSystem>
+    <ReloadUnitSystem>false</ReloadUnitSystem>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
+    <OutputPath>.</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Package Only' ">
+    <PackageMod>true</PackageMod>
+    <DeployMod>false</DeployMod>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Deploy Only' ">
+    <PackageMod>false</PackageMod>
+    <DeployMod>true</DeployMod>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Firaxis\ModBuddy\Civ5Mod.targets" />
+</Project>

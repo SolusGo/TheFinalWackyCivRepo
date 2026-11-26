@@ -1,0 +1,5 @@
+/Build/
+/Packages/
+*.civ5proj.user
+*.civ5suo
+*.suo
