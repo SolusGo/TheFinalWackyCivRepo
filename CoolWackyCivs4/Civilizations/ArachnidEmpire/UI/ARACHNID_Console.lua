@@ -3,6 +3,10 @@ include("InstanceManager")
 include("ARACHNID_State")
 local brood = ARACHNID
 if brood.incompatibleSave then return end
+if not brood.hooksReady() then
+    print("ARACHNID: Standalone Community Patch v151 with the required gameplay hooks is missing or disabled. Console disabled.")
+    return
+end
 include("ARACHNID_Rules")
 
 local text = brood.text

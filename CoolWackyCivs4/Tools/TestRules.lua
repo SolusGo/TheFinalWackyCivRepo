@@ -128,6 +128,10 @@ local function makeUnit(owner, kind, military, id)
     local unit = {owner=owner.owner, id=id or nextID, kind=kind, born=turn, promotions={},
         damage=0, military=military, ranged=false, delayed=false, name="",
         GetOwner=function(self) return self.owner end, GetID=function(self) return self.id end,
+        GetUnitType=function(self) return self.kind end,
+        GetX=function(self) return self.x end, GetY=function() return 0 end,
+        GetPlot=function(self) return self.x == 0 and home.plot or adjacent end,
+        Kill=function(self) Players[self.owner].roster[self.id]=nil end,
         GetGameTurnCreated=function(self) return self.born end,
         IsDelayedDeath=function(self) return self.delayed end,
         IsDead=function(self) return self.damage>=100 end,
@@ -165,7 +169,7 @@ local function battleStart(source, target, kind)
     GameEvents.BattleStarted.fire(kind or 1, 1, 2)
     GameEvents.BattleJoined.fire(source.owner, source.id, 0, false)
     GameEvents.BattleJoined.fire(target.owner, target.id, 1, false)
-    GameEvents.CombatResult.fire(source.owner, source.id, 20, 20, 100, target.owner, target.id, 0, 0, 100, -1, -1, 0, 1, 2)
+    GameEvents.CombatResult.fire(source.owner, source.id, 20, 20, 100, target.owner, target.id, 20, 20, 100, -1, -1, 0, 1, 2)
 end
 local function kill(source, target, kind)
     battleStart(source, target, kind)
@@ -314,3 +318,118 @@ expect(third:GetNumRealBuilding(science),1)
 expect(spawnReason(1),nil)
 player.human=false
 expect(brood.spawn(1),"INELIGIBLE"); expect(brood.evolve(1),"INELIGIBLE")
+player.human=true
+
+-- 5.4.6's city bombardment uses -1/-1 for the attacking RED owner/ID.
+local target = makeUnit(enemy,12,true)
+local before = state.sp
+GameEvents.BattleStarted.fire(1,2,3)
+GameEvents.CombatResult.fire(-1,-1,0,0,200,1,target.id,100,100,100,-1,-1,0,2,3)
+target.damage=100
+GameEvents.UnitPrekill.fire(1,target.id,12,2,3,true,0)
+GameEvents.UnitKilledInCombat.fire(0,1,12,-1)
+GameEvents.BattleFinished.fire()
+expect(state.sp,before+4,"city bombardment")
+
+-- Quick melee can resolve after defensive fire support at another plot.
+local attacker = makeUnit(enemy,12,true)
+local collateral = makeUnit(enemy,13,true)
+GameEvents.BattleStarted.fire(0,5,6)
+GameEvents.BattleJoined.fire(1,collateral.id,3,false)
+GameEvents.BattleStarted.fire(1,7,8)
+GameEvents.CombatResult.fire(1,attacker.id,0,0,100,0,conventional.id,1,1,100,-1,-1,0,7,8)
+GameEvents.BattleFinished.fire()
+GameEvents.CombatEnded.fire()
+GameEvents.CombatResult.fire(1,attacker.id,100,100,100,0,conventional.id,10,10,100,-1,-1,0,5,6)
+attacker.damage=100
+GameEvents.UnitPrekill.fire(1,attacker.id,12,5,6,true,0)
+GameEvents.UnitKilledInCombat.fire(0,1,12,-1)
+collateral.damage=100
+GameEvents.UnitPrekill.fire(1,collateral.id,13,5,6,true,0)
+GameEvents.UnitKilledInCombat.fire(0,1,13,-1)
+GameEvents.BattleFinished.fire()
+expect(state.sp,before+12,"defensive and subsequent participant kills")
+
+local expired = makeUnit(enemy,12,true)
+battleStart(conventional,expired)
+GameEvents.GameCoreUpdateEnd.fire()
+expired.damage=100
+GameEvents.UnitPrekill.fire(1,expired.id,12,1,2,true,0)
+GameEvents.UnitKilledInCombat.fire(0,1,12,-1)
+expect(state.sp,before+12,"expired combat cannot pay")
+local retainedVenom = makeUnit(player,9,true)
+brood.applyBiology(retainedVenom,2,state)
+local unharmed = makeUnit(enemy,12,true)
+GameEvents.BattleStarted.fire(1,1,2)
+GameEvents.CombatResult.fire(0,retainedVenom.id,0,0,100,1,unharmed.id,0,0,100,-1,-1,0,1,2)
+unharmed.damage=5
+GameEvents.BattleFinished.fire()
+expect(brood.poisonFor(1)[unharmed.id],nil,"unattributed HP loss cannot apply venom")
+player.roster[retainedVenom.id]=nil
+
+local bypass = makeUnit(minor,9,true)
+GameEvents.UnitCreated.fire(2,bypass.id,9,0,0)
+bypass:SetHasPromotion(ids.PROMOTION_ARACHNID_VENOM,true)
+bypass:SetHasPromotion(ids.PROMOTION_ARACHNID_APEX,true)
+bypass:SetName(brood.text("VENOM"))
+GameEvents.GameCoreUpdateEnd.fire()
+expect(brood.specialization(bypass),nil,"delayed gift copy")
+expect(bypass:IsHasPromotion(ids.PROMOTION_ARACHNID_APEX),false)
+expect(bypass:GetNameNoDesc(),"")
+local restoredGift = makeUnit(player,9,true)
+GameEvents.UnitCreated.fire(0,restoredGift.id,9,0,0)
+restoredGift:SetHasPromotion(ids.PROMOTION_ARACHNID_VENOM,true)
+restoredGift:SetHasPromotion(ids.PROMOTION_ARACHNID_ARMOURED,true)
+GameEvents.GameCoreUpdateEnd.fire()
+expect(brood.specialization(restoredGift),nil,"returned gift with unverified specialization")
+
+local orphan = makeUnit(enemy,9,true)
+orphan:SetHasPromotion(ids.PROMOTION_ARACHNID_POISON,true)
+brood,state=load()
+expect(orphan:IsHasPromotion(ids.PROMOTION_ARACHNID_POISON),false,"orphan on load")
+brood.poisonFor(1)[orphan.id]={born=orphan.born,damage=10}
+GameEvents.PlayerDoTurn.fire(1)
+expect(orphan.damage,0,"missing marker")
+brood.poisonFor(1)[orphan.id]={born=orphan.born,damage=10}
+GameEvents.UnitCreated.fire(1,orphan.id,9,0,0)
+expect(brood.poisonFor(1)[orphan.id],nil,"reused ID in the same turn")
+
+local normalInit = player.InitUnit
+local beforeSP, beforeReady, beforeCP = state.sp, state.ready, occupied()
+player.InitUnit = function() return nil end
+expect(brood.spawn(1),"CREATE_FAILED","null return")
+player.InitUnit = function(self, kind, x)
+    local unit = normalInit(self,kind,x)
+    unit.x=x+2
+    return unit
+end
+expect(brood.spawn(1),"CREATE_FAILED","unexpected tile")
+expect(player.roster[spawned.id],nil,"rollback removes only created unit")
+player.InitUnit = function() return conventional end
+expect(brood.spawn(1),"CREATE_FAILED","existing unit returned")
+expect(player.roster[conventional.id],conventional)
+player.InitUnit = function(self, kind, x)
+    local unit = normalInit(self,kind,x)
+    iron=-1
+    return unit
+end
+expect(brood.spawn(1),"CREATE_FAILED","resource changed during creation")
+expect(player.roster[spawned.id],nil)
+iron=1
+expect(state.sp,beforeSP); expect(state.ready,beforeReady); expect(occupied(),beforeCP)
+player.InitUnit=normalInit
+expect(brood.spawn(1),nil,"guard recovered")
+expect(brood.hooksReady(),false,"missing CP schema")
+local savedProgress = state.evolved
+player.alive=false
+home.owner,home.plot.owner=1,1
+GameEvents.CityCaptureComplete.fire(0,true,0,0,1,1,false)
+expect(home:GetNumRealBuilding(science),0,"capture strips Science through elimination")
+expect(brood.spawn(1),"INELIGIBLE")
+player.alive=true
+brood,state=load()
+expect(state.evolved,savedProgress,"resurrection preserves progression")
+expect(spawnReason(1),"NO_LAIR")
+home.owner,home.plot.owner=0,0
+GameEvents.CityCaptureComplete.fire(1,true,0,0,0,1,false)
+expect(home:GetNumRealBuilding(science),1,"liberation restores Science")

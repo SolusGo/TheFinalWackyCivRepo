@@ -3,6 +3,20 @@ ARACHNID = {}
 local brood = ARACHNID
 local ids = GameInfoTypes
 
+function brood.hooksReady()
+    local required = {
+        EVENTS_BATTLES=true, EVENTS_RED_COMBAT=true, EVENTS_RED_COMBAT_RESULT=true,
+        EVENTS_RED_COMBAT_ENDED=true, EVENTS_UNIT_CREATED=true, EVENTS_UNIT_PREKILL=true,
+        EVENTS_UNIT_CONVERTS=true, EVENTS_CITY=true, EVENTS_NEW_ERA=true,
+    }
+    local ok = pcall(function()
+        for row in DB.Query("SELECT Name FROM CustomModOptions WHERE Value = 1") do
+            required[row.Name] = nil
+        end
+    end)
+    return ok and not next(required)
+end
+
 brood.text = function(key, ...)
     return Locale.ConvertTextKey("TXT_KEY_ARACHNID_" .. key, ...)
 end

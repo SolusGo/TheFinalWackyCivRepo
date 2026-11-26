@@ -91,4 +91,4 @@ Combat eligibility is limited to hostile military deaths supported by the paired
 
 The code avoids map-wide scans and only reconciles the Arachnid owner's cities and units. The requested 34-civilization, long Marathon compatibility still needs a real-game stress run. Other packs' database and UI integrations were reviewed for namespacing, with combined in-game testing pending.
 
-See [Testing](TESTING.md) and [Artwork](ARTWORK.md).
+See [the pinned 5.4.6 audit](AUDIT.md), [Testing](TESTING.md), and [Artwork](ARTWORK.md).

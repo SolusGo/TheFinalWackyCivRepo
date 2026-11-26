@@ -108,8 +108,9 @@ def database(cache, actions):
         assert one("SELECT Yield FROM Building_YieldChanges WHERE BuildingType='BUILDING_ARACHNID_CHAMBER_SCIENCE' AND YieldType='YIELD_SCIENCE'") == (1,)
         assert one("SELECT DefenseMod FROM UnitPromotions WHERE Type='PROMOTION_ARACHNID_ARMOURED'") == (15,)
         assert one("SELECT CombatPercent FROM UnitPromotions WHERE Type='PROMOTION_ARACHNID_APEX'") == (10,)
+        assert one("SELECT COUNT(*) FROM UnitPromotions WHERE Type GLOB 'PROMOTION_ARACHNID_*' AND LostOnGifting=1 AND CannotBeChosen=1") == (6,)
         assert one("SELECT FriendlyHealChange, NeutralHealChange, EnemyHealChange FROM UnitPromotions WHERE Type='PROMOTION_ARACHNID_REGENERATION'") == (5, 5, 5)
-        for option in ("EVENTS_BATTLES", "EVENTS_UNIT_PREKILL", "EVENTS_UNIT_CONVERTS", "EVENTS_CITY",
+        for option in ("EVENTS_BATTLES", "EVENTS_UNIT_PREKILL", "EVENTS_UNIT_CONVERTS", "EVENTS_UNIT_CREATED", "EVENTS_CITY",
                        "EVENTS_NEW_ERA", "EVENTS_RED_COMBAT", "EVENTS_RED_COMBAT_RESULT", "EVENTS_RED_COMBAT_ENDED"):
             assert one("SELECT Value FROM CustomModOptions WHERE Name=?", option) == (1,)
         ranged = ["ARCHER", "COMPOSITE_BOWMAN", "CROSSBOWMAN", "GATLINGGUN", "MACHINE_GUN", "BAZOOKA"]

@@ -2,24 +2,27 @@ local brood = ARACHNID
 local poison = GameInfoTypes.PROMOTION_ARACHNID_POISON
 local attackerRole, defenderRole = 0, 1
 local melee, ranged = 0, 1
-local battle, lethal
+local battle, generating
+local generated = {}
+local created = {}
 
 local function clearCombat()
-    battle, lethal = nil, nil
+    battle = nil
 end
 
 GameEvents.BattleStarted.Add(function(kind, x, y)
-    clearCombat()
-    if brood.active() then
-        battle = {kind=kind, x=x, y=y, roles={}, members={}, rewarded={}}
-    end
+    generating = nil
+    if not brood.active() then return end
+    generating = {kind=kind, x=x, y=y, roles={}, members={}, pending={}, rewarded={}}
+    -- Defensive fire support can generate a second battle before the first resolves.
+    if #generated == 8 then table.remove(generated, 1) end
+    generated[#generated + 1] = generating
 end)
 
-GameEvents.BattleJoined.Add(function(owner, id, role, isCity)
-    if not battle then return end
+local function recordMember(transaction, owner, id, role, isCity)
     local member = {owner=owner, id=id, city=isCity}
-    battle.roles[role] = member
-    if not isCity then battle.members[owner .. ":" .. id] = true end
+    if role < 3 then transaction.roles[role] = member end
+    if not isCity then transaction.members[owner .. ":" .. id] = true end
     if isCity or (role ~= attackerRole and role ~= defenderRole) then return end
     local unit = brood.liveUnit(owner, id)
     if not unit then return end
@@ -27,11 +30,45 @@ GameEvents.BattleJoined.Add(function(owner, id, role, isCity)
     if brood.eligible(Players[owner]) and brood.specialization(unit) == 2 then
         member.venom = brood.evolved(brood.state(owner), 5) and 10 or 5
     end
+end
+
+GameEvents.BattleJoined.Add(function(owner, id, role, isCity)
+    if generating then recordMember(generating, owner, id, role, isCity) end
 end)
 
-GameEvents.CombatResult.Add(function(attacker, _, _, _, _, defender, _, _, _, _, interceptor, _, _, x, y)
-    if battle and battle.x == x and battle.y == y then
-        battle.sources = {[attacker]=true, [defender]=true, [interceptor]=true}
+GameEvents.CombatResult.Add(function(attacker, attackerID, damageToAttacker, _, _,
+    defender, defenderID, damageToDefender, _, _, interceptor, interceptorID, _, x, y)
+    clearCombat()
+    for index = #generated, 1, -1 do
+        local candidate = generated[index]
+        if candidate.x == x and candidate.y == y then
+            battle = table.remove(generated, index)
+            break
+        end
+    end
+    generating = nil
+    if not battle or battle.kind > 3 then return end
+    battle.sources = {}
+    local function confirm(role, owner, id, damage)
+        if owner and owner >= 0 and id and id >= 0 and brood.liveUnit(owner, id) then
+            local member = battle.roles[role]
+            if not member or member.city or member.owner ~= owner or member.id ~= id then
+                recordMember(battle, owner, id, role, false)
+            end
+        end
+        local joined = battle.roles[role]
+        if joined and ((joined.owner == owner and (joined.city or joined.id == id))
+            or (joined.city and (owner == nil or owner < 0))) then
+            battle.sources[joined.owner] = true
+            joined.damageDealt = damage
+        end
+    end
+    confirm(attackerRole, attacker, attackerID, damageToDefender)
+    confirm(defenderRole, defender, defenderID, damageToAttacker)
+    confirm(2, interceptor, interceptorID)
+    if battle.kind == ranged and attacker == -1 and attackerID == -1
+        and defender and defender >= 0 and defenderID and defenderID >= 0 and (damageToDefender or 0) > 0 then
+        battle.cityTarget = defender .. ":" .. defenderID
     end
 end)
 
@@ -39,34 +76,40 @@ GameEvents.UnitPrekill.Add(function(owner, id, kind, _, _, delayed, killer)
     brood.clearPoison(owner, id)
     if brood.eligible(Players[owner]) then brood.dirty() end
 
-    lethal = nil
     local player, victim = Players[killer], Players[owner]
-    if not battle or not battle.sources or not battle.sources[killer] or not delayed
+    local identity = owner .. ":" .. id
+    if not battle or not battle.sources or not (battle.sources[killer] or battle.cityTarget == identity) or not delayed
         or not brood.eligible(player) or not brood.hostile(player, victim) then return end
     local unit = victim:GetUnitByID(id)
     -- Delayed death is the first callback for damage-driven death. The immediate
     -- callback, voluntary removals, gifting and upgrade cleanup cannot qualify.
-    local identity = owner .. ":" .. id
     if battle.members[identity] and not battle.rewarded[identity]
         and brood.military(unit) and unit:IsDead() and not unit:IsDelayedDeath() then
-        lethal = {killer=killer, owner=owner, kind=kind, identity=identity}
+        local key = killer .. ":" .. owner .. ":" .. kind
+        -- setDamage confirms synchronously; ambiguous matches fail closed.
+        local pending = battle.pending[key]
+        if pending == nil then battle.pending[key] = identity
+        elseif pending ~= identity then battle.pending[key] = false end
     end
 end)
 
 GameEvents.UnitKilledInCombat.Add(function(killer, owner, kind)
-    if not lethal or lethal.killer ~= killer or lethal.owner ~= owner or lethal.kind ~= kind then return end
-    battle.rewarded[lethal.identity] = true
-    lethal = nil
+    if not battle then return end
+    local key = killer .. ":" .. owner .. ":" .. kind
+    local identity = battle.pending[key]
+    battle.pending[key] = nil
+    if not identity or battle.rewarded[identity] or not brood.eligible(Players[killer]) then return end
+    battle.rewarded[identity] = true
     brood.reward(Players[killer], Players[owner]:IsBarbarian())
     brood.dirty()
 end)
 
 local function envenom(source, target)
-    if not source or not target or not source.venom or target.city then return end
+    if not source or not target or not source.venom or (source.damageDealt or 0) <= 0 or target.city then return end
     local player = Players[source.owner]
     if not brood.hostile(player, Players[target.owner]) then return end
     local unit = brood.liveUnit(target.owner, target.id)
-    if not brood.military(unit) or unit:GetGameTurnCreated() ~= target.born
+    if not target.damage or not brood.military(unit) or unit:GetGameTurnCreated() ~= target.born
         or unit:GetDamage() <= target.damage then return end
 
     local pending = brood.poisonFor(target.owner)
@@ -94,7 +137,40 @@ GameEvents.BattleFinished.Add(function()
     if completed.kind == melee then envenom(defender, attacker) end
 end)
 GameEvents.CombatEnded.Add(clearCombat)
-GameEvents.GameCoreUpdateEnd.Add(clearCombat)
+-- UnitCreated precedes the city-state gift's promotion/name copy.
+GameEvents.UnitCreated.Add(function(owner, id)
+    if brood.active() then
+        brood.clearPoison(owner, id)
+        created[owner .. ":" .. id] = {owner=owner, id=id}
+    end
+end)
+
+function brood.retainBirth(unit)
+    local entry = created[unit:GetOwner() .. ":" .. unit:GetID()]
+    if entry then entry.retain = true end
+end
+
+GameEvents.GameCoreUpdateEnd.Add(function()
+    clearCombat()
+    if #generated > 0 then generated = {} end
+    generating = nil
+    if not next(created) then return end
+    local queue = created
+    created = {}
+    for _, entry in pairs(queue) do
+        local unit = brood.liveUnit(entry.owner, entry.id)
+        if unit then
+            local player = Players[entry.owner]
+            if not entry.retain or not brood.eligible(player) then
+                brood.stripBiology(unit)
+            end
+            local pending = brood.poisonFor(entry.owner)[entry.id]
+            if unit:IsHasPromotion(poison) and (not pending or pending.born ~= unit:GetGameTurnCreated()) then
+                unit:SetHasPromotion(poison, false)
+            end
+        end
+    end
+end)
 
 local function tickPoison(owner)
     local pending = brood.poisonFor(owner)
@@ -123,11 +199,11 @@ GameEvents.UnitConverted.Add(function(oldOwner, newOwner, oldID, newID, upgrade)
     local variant = oldUnit and brood.specialization(oldUnit)
     if upgrade and oldOwner == newOwner and brood.eligible(newPlayer) and variant then
         brood.applyBiology(unit, variant, brood.state(newOwner))
+        brood.retainBirth(unit)
         brood.stripBiology(oldUnit)
-    elseif variant or brood.specialization(unit) then
+    elseif variant or brood.specialization(unit) or unit:IsHasPromotion(GameInfoTypes.PROMOTION_ARACHNID_APEX)
+        or unit:IsHasPromotion(GameInfoTypes.PROMOTION_ARACHNID_REGENERATION) then
         -- Gifts, captures and other conversions permanently sterilize the result.
-        if variant and not brood.specialization(unit)
-            and unit:GetNameNoDesc() == brood.text(brood.variants[variant].key) then unit:SetName("") end
         brood.stripBiology(unit)
     end
     if brood.eligible(oldPlayer) or brood.eligible(newPlayer) then brood.dirty() end
@@ -151,9 +227,9 @@ end)
 
 GameEvents.CityCaptureComplete.Add(function(oldOwner, _, x, y, newOwner)
     local old, new = Players[oldOwner], Players[newOwner]
-    if not brood.eligible(old) and not brood.eligible(new) then return end
     local plot = Map.GetPlot(x, y)
     brood.syncCity(plot and plot:GetPlotCity())
+    if not brood.eligible(old) and not brood.eligible(new) then return end
     if brood.eligible(old) then brood.updateLair(old) end
     if brood.eligible(new) then
         brood.updateLair(new)
@@ -184,9 +260,29 @@ GameEvents.TeamSetEra.Add(function(team)
     end
 end)
 
+local reconciled = false
 local function initialize()
     local player = brood.active()
     if not player then return end
+    if not reconciled then
+        reconciled = true
+        for owner, other in pairs(Players) do
+            if other:IsAlive() then
+                local pending = brood.poisonFor(owner)
+                for unit in other:Units() do
+                    local effect = pending[unit:GetID()]
+                    if unit:IsHasPromotion(poison) and (not effect or effect.born ~= unit:GetGameTurnCreated()) then
+                        unit:SetHasPromotion(poison, false)
+                    end
+                    if not brood.eligible(other) and (brood.specialization(unit)
+                        or unit:IsHasPromotion(GameInfoTypes.PROMOTION_ARACHNID_APEX)
+                        or unit:IsHasPromotion(GameInfoTypes.PROMOTION_ARACHNID_REGENERATION)) then
+                        brood.stripBiology(unit)
+                    end
+                end
+            end
+        end
+    end
     brood.updateLair(player)
     brood.syncCities(player)
     local state = brood.state(player:GetID())

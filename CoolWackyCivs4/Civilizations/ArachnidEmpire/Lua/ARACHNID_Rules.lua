@@ -82,12 +82,13 @@ function brood.applyBiology(unit, specialization, state)
 end
 
 function brood.stripBiology(unit)
-    local specialization = brood.specialization(unit)
-    if specialization then
-        local name = unit:GetNameNoDesc()
-        if name == text(brood.variants[specialization].key) then unit:SetName("") end
+    local name = unit:GetNameNoDesc()
+    for _, variant in ipairs(brood.variants) do
+        if name == text(variant.key) then unit:SetName(""); break end
     end
-    brood.applyBiology(unit, nil)
+    if brood.specialization(unit) or unit:IsHasPromotion(regeneration) or unit:IsHasPromotion(apex) then
+        brood.applyBiology(unit, nil)
+    end
 end
 
 function brood.swarm(player)
@@ -199,14 +200,15 @@ local function contemporary(player, index)
     end
 end
 
-local function legalPlot(player, plot)
+local function legalPlot(player, plot, createdID)
     if not plot or plot:GetOwner() ~= player:GetID() or plot:IsWater()
         or plot:IsMountain() or plot:IsImpassable() then return false end
     local city = plot:GetPlotCity()
     if city and city:GetOwner() ~= player:GetID() then return false end
     for index = 0, plot:GetNumUnits() - 1 do
         local unit = plot:GetUnit(index)
-        if unit and not unit:IsDelayedDeath()
+        if unit and not (unit:GetOwner() == player:GetID() and unit:GetID() == createdID)
+            and not unit:IsDelayedDeath()
             and (unit:GetOwner() ~= player:GetID() or brood.military(unit) or unit:IsEmbarked()) then
             return false
         end
@@ -260,12 +262,33 @@ function brood.spawn(index)
     if reason then return reason, detail end
 
     acting = true
-    local unit = player:InitUnit(row.ID, plot:GetX(), plot:GetY())
-    if not unit then acting = false; return "CREATE_FAILED" end
-
     local owner = player:GetID()
+    local existing = {}
+    for prior in player:Units() do existing[prior:GetID()] = true end
+    local x, y = plot:GetX(), plot:GetY()
+    local ok, unit = pcall(player.InitUnit, player, row.ID, x, y)
+    if ok and unit and unit:GetOwner() == owner and not existing[unit:GetID()] then
+        unit = brood.liveUnit(owner, unit:GetID())
+    else
+        unit = nil
+    end
+    local created = unit ~= nil
+    local valid = created and unit:GetUnitType() == row.ID and unit:GetX() == x and unit:GetY() == y
+        and brood.queen(player) and legalPlot(player, unit:GetPlot(), unit:GetID())
+    if valid then
+        for need in GameInfo.Unit_ResourceQuantityRequirements{UnitType=row.Type} do
+            -- A live unit is already included in CP's resource usage.
+            if player:GetNumResourceAvailable(ids[need.ResourceType], true) < 0 then valid = false; break end
+        end
+    end
+    if not valid then
+        if created then unit:Kill(false, -1) end
+        acting = false
+        return "CREATE_FAILED"
+    end
     local state = brood.state(owner)
     brood.applyBiology(unit, index, state)
+    brood.retainBirth(unit)
     unit:SetName(text(brood.variants[index].key))
     state.sp = state.sp - cost
     state.ready = Game.GetGameTurn() + (cooldown[Game.GetGameSpeedType()] or 1)
