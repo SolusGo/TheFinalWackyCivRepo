@@ -3,8 +3,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
     <Name>Cool Wacky Civs 4</Name>
-    <Teaser>The fourth installment in the Cool Wacky Civs series.</Teaser>
-    <Description>A Civilization V mod project for Cool Wacky Civs 4.</Description>
+    <Teaser>Lead the Arachnid Empire and evolve through warfare.</Teaser>
+    <Description>The Arachnid Empire for Civilization V: Brave New World and Community Patch v151.</Description>
     <Authors>SolusGo</Authors>
     <Homepage>https://github.com/SolusGo/TheFinalWackyCivRepo</Homepage>
     <Guid>4e2d7f10-235f-4323-95ec-6bda1a25d27a</Guid>
@@ -24,6 +24,53 @@
     <ReloadLandmarkSystem>false</ReloadLandmarkSystem>
     <ReloadStrategicViewSystem>false</ReloadStrategicViewSystem>
     <ReloadUnitSystem>false</ReloadUnitSystem>
+    <Civ5UserPath Condition=" '$(Civ5UserPath)' == '' ">$(USERPROFILE)\Documents\My Games\Sid Meier's Civilization 5</Civ5UserPath>
+    <ModActions>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>Civilizations/ArachnidEmpire/SQL/ARACHNID_Civilization.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>Civilizations/ArachnidEmpire/SQL/ARACHNID_Uniques.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>Civilizations/ArachnidEmpire/XML/ARACHNID_Atlases.xml</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>Civilizations/ArachnidEmpire/Text/ARACHNID_Text.xml</FileName>
+      </Action>
+    </ModActions>
+    <ModContent>
+      <Content>
+        <Type>InGameUIAddin</Type>
+        <Name>Arachnid Empire</Name>
+        <Description>Gameplay, save state, and the Arachnid Empire interface.</Description>
+        <FileName>Civilizations/ArachnidEmpire/UI/ARACHNID_Console.xml</FileName>
+      </Content>
+    </ModContent>
+    <ModDependencies>
+      <Association>
+        <Type>Dlc</Type>
+        <Name>Expansion - Brave New World</Name>
+        <Id>6DA07636-4123-4018-B643-6575B4EC336B</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>(1) Community Patch</Name>
+        <Id>d1b6328c-ff44-4b0d-aad7-c657f83610cd</Id>
+        <MinVersion>151</MinVersion>
+        <MaxVersion>151</MaxVersion>
+      </Association>
+    </ModDependencies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>
@@ -36,5 +83,217 @@
     <PackageMod>false</PackageMod>
     <DeployMod>true</DeployMod>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Alpha128.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Alpha16.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Alpha24.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Alpha256.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Alpha32.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Alpha45.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Alpha48.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Alpha64.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Alpha80.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Brood128.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Brood16.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Brood24.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Brood256.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Brood32.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Brood45.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Brood48.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Brood64.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Brood80.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Civ128.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Civ16.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Civ24.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Civ256.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Civ32.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Civ45.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Civ48.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Civ64.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Civ80.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Dawn.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Diplomacy.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Evolution128.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Evolution16.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Evolution24.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Evolution256.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Evolution32.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Evolution45.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Evolution48.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Evolution64.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Evolution80.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Flag32.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_LeaderScene.xml">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Map.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Panel.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Queen128.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Queen16.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Queen24.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Queen256.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Queen32.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Queen45.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Queen48.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Queen64.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Queen80.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Spider128.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Spider16.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Spider24.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Spider256.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Spider32.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Spider45.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Spider48.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Spider64.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Spider80.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Art/ARACHNID_Tree.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Lua/ARACHNID_Events.lua">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Lua/ARACHNID_Rules.lua">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Lua/ARACHNID_State.lua">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/SQL/ARACHNID_Civilization.sql">
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/SQL/ARACHNID_Uniques.sql">
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/Text/ARACHNID_Text.xml">
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/UI/ARACHNID_Console.lua">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/UI/ARACHNID_Console.xml">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/ArachnidEmpire/XML/ARACHNID_Atlases.xml">
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Firaxis\ModBuddy\Civ5Mod.targets" />
 </Project>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Context Name="ARACHNID_Console">
+  <Script file="ARACHNID_Console.lua" />
+  <GridButton ID="Launcher" Anchor="R,C" Offset="14,-62" Size="182,34" Style="BaseButton"
+      Font="TwCenMT16" String="TXT_KEY_ARACHNID_TITLE" ConsumeMouse="1" Hidden="1" />
+  <Container ID="Panel" Anchor="C,C" Size="888,608" ConsumeMouse="1" Hidden="1">
+    <Image Anchor="L,T" Size="888,608" Texture="ARACHNID_Panel.dds" />
+    <Image ID="Crest" Anchor="L,T" Offset="20,12" Size="48,48" />
+    <Label ID="Title" Anchor="L,T" Offset="77,14" Font="TwCenMT30" ColorSet="Beige_Black_Alpha" />
+    <Label ID="Capital" Anchor="L,T" Offset="78,49" Font="TwCenMT18" ColorSet="Beige_Black_Alpha" />
+    <Image ID="SpawnResource" Anchor="L,T" Offset="20,76" Size="32,32" />
+    <Label ID="SpawnBalance" Anchor="L,T" Offset="58,81" Font="TwCenMT20" ColorSet="Beige_Black_Alpha" />
+    <Image ID="EvolutionResource" Anchor="L,T" Offset="275,76" Size="32,32" />
+    <Label ID="EvolutionBalance" Anchor="L,T" Offset="313,81" Font="TwCenMT20" ColorSet="Beige_Black_Alpha" />
+    <Image ID="ControlResource" Anchor="L,T" Offset="455,76" Size="32,32" />
+    <Label ID="ControlBalance" Anchor="L,T" Offset="493,81" Font="TwCenMT20" ColorSet="Beige_Black_Alpha" />
+    <Label ID="Cooldown" Anchor="L,T" Offset="673,81" Font="TwCenMT20" ColorSet="Beige_Black_Alpha" />
+    <GridButton ID="SpawnTab" Anchor="L,T" Offset="22,109" Size="151,30" Style="BaseButton" Font="TwCenMT16" String="TXT_KEY_ARACHNID_TAB_SPAWN" />
+    <GridButton ID="EvolutionTab" Anchor="L,T" Offset="179,109" Size="151,30" Style="BaseButton" Font="TwCenMT16" String="TXT_KEY_ARACHNID_TAB_EVOLUTION" />
+    <GridButton ID="SwarmTab" Anchor="L,T" Offset="336,109" Size="151,30" Style="BaseButton" Font="TwCenMT16" String="TXT_KEY_ARACHNID_TAB_SWARM" />
+    <Label ID="Era" Anchor="L,T" Offset="673,48" Font="TwCenMT18" ColorSet="Beige_Black_Alpha" />
+    <GridButton ID="Close" Anchor="L,T" Offset="743,13" Size="125,28" Style="SmallButton" Font="TwCenMT16" String="TXT_KEY_ARACHNID_CLOSE" />
+    <Container ID="SpawnView" Anchor="L,T" Offset="20,152" Size="848,392">
+      <Grid Anchor="L,T" Offset="0,12" Size="848,108" Style="Grid9DetailFive140">
+        <Image ID="SpawnIcon1" Anchor="L,T" Offset="14,14" Size="80,80" />
+        <Label ID="SpawnName1" Anchor="L,T" Offset="108,8" Font="TwCenMT24" ColorSet="Beige_Black_Alpha" />
+        <Label ID="SpawnEffect1" Anchor="L,T" Offset="108,38" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" WrapWidth="552" />
+        <Label ID="SpawnBase1" Anchor="L,T" Offset="108,80" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" WrapWidth="564" />
+        <GridButton ID="SpawnAction1" Anchor="L,T" Offset="684,15" Size="146,35" Style="BaseButton" Font="TwCenMT16" String="TXT_KEY_ARACHNID_SPAWN" />
+        <Label ID="SpawnStatus1" Anchor="L,T" Offset="686,54" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" WrapWidth="145" />
+      </Grid>
+      <Grid Anchor="L,T" Offset="0,132" Size="848,108" Style="Grid9DetailFive140">
+        <Image ID="SpawnIcon2" Anchor="L,T" Offset="14,14" Size="80,80" />
+        <Label ID="SpawnName2" Anchor="L,T" Offset="108,8" Font="TwCenMT24" ColorSet="Beige_Black_Alpha" />
+        <Label ID="SpawnEffect2" Anchor="L,T" Offset="108,38" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" WrapWidth="552" />
+        <Label ID="SpawnBase2" Anchor="L,T" Offset="108,80" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" WrapWidth="564" />
+        <GridButton ID="SpawnAction2" Anchor="L,T" Offset="684,15" Size="146,35" Style="BaseButton" Font="TwCenMT16" String="TXT_KEY_ARACHNID_SPAWN" />
+        <Label ID="SpawnStatus2" Anchor="L,T" Offset="686,54" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" WrapWidth="145" />
+      </Grid>
+      <Grid Anchor="L,T" Offset="0,252" Size="848,108" Style="Grid9DetailFive140">
+        <Image ID="SpawnIcon3" Anchor="L,T" Offset="14,14" Size="80,80" />
+        <Label ID="SpawnName3" Anchor="L,T" Offset="108,8" Font="TwCenMT24" ColorSet="Beige_Black_Alpha" />
+        <Label ID="SpawnEffect3" Anchor="L,T" Offset="108,38" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" WrapWidth="552" />
+        <Label ID="SpawnBase3" Anchor="L,T" Offset="108,80" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" WrapWidth="564" />
+        <GridButton ID="SpawnAction3" Anchor="L,T" Offset="684,15" Size="146,35" Style="BaseButton" Font="TwCenMT16" String="TXT_KEY_ARACHNID_SPAWN" />
+        <Label ID="SpawnStatus3" Anchor="L,T" Offset="686,54" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" WrapWidth="145" />
+      </Grid>
+    </Container>
+    <Container ID="EvolutionView" Anchor="L,T" Offset="20,152" Size="848,388" Hidden="1">
+      <Image Anchor="L,T" Size="848,388" Texture="ARACHNID_Tree.dds" />
+      <Grid Anchor="L,T" Offset="0,4" Size="270,108" Style="Grid9DetailFive140">
+        <Image ID="EvolutionIcon1" Anchor="L,T" Offset="10,11" Size="48,48" />
+        <Label ID="EvolutionName1" Anchor="L,T" Offset="66,8" Font="TwCenMT20" ColorSet="Beige_Black_Alpha" />
+        <Label ID="EvolutionCost1" Anchor="L,T" Offset="66,32" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" />
+        <Label ID="EvolutionRequires1" Anchor="L,T" Offset="66,51" Font="TwCenMT14" ColorSet="Beige_Black_Alpha" WrapWidth="198" />
+        <GridButton ID="EvolutionAction1" Anchor="L,T" Offset="65,77" Size="194,24" Style="SmallButton" Font="TwCenMT16" />
+      </Grid>
+      <Grid Anchor="L,T" Offset="289,4" Size="270,108" Style="Grid9DetailFive140">
+        <Image ID="EvolutionIcon2" Anchor="L,T" Offset="10,11" Size="48,48" />
+        <Label ID="EvolutionName2" Anchor="L,T" Offset="66,8" Font="TwCenMT20" ColorSet="Beige_Black_Alpha" />
+        <Label ID="EvolutionCost2" Anchor="L,T" Offset="66,32" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" />
+        <Label ID="EvolutionRequires2" Anchor="L,T" Offset="66,51" Font="TwCenMT14" ColorSet="Beige_Black_Alpha" WrapWidth="198" />
+        <GridButton ID="EvolutionAction2" Anchor="L,T" Offset="65,77" Size="194,24" Style="SmallButton" Font="TwCenMT16" />
+      </Grid>
+      <Grid Anchor="L,T" Offset="578,4" Size="270,108" Style="Grid9DetailFive140">
+        <Image ID="EvolutionIcon3" Anchor="L,T" Offset="10,11" Size="48,48" />
+        <Label ID="EvolutionName3" Anchor="L,T" Offset="66,8" Font="TwCenMT20" ColorSet="Beige_Black_Alpha" />
+        <Label ID="EvolutionCost3" Anchor="L,T" Offset="66,32" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" />
+        <Label ID="EvolutionRequires3" Anchor="L,T" Offset="66,51" Font="TwCenMT14" ColorSet="Beige_Black_Alpha" WrapWidth="198" />
+        <GridButton ID="EvolutionAction3" Anchor="L,T" Offset="65,77" Size="194,24" Style="SmallButton" Font="TwCenMT16" />
+      </Grid>
+      <Grid Anchor="L,T" Offset="0,139" Size="270,108" Style="Grid9DetailFive140">
+        <Image ID="EvolutionIcon4" Anchor="L,T" Offset="10,11" Size="48,48" />
+        <Label ID="EvolutionName4" Anchor="L,T" Offset="66,8" Font="TwCenMT20" ColorSet="Beige_Black_Alpha" />
+        <Label ID="EvolutionCost4" Anchor="L,T" Offset="66,32" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" />
+        <Label ID="EvolutionRequires4" Anchor="L,T" Offset="66,51" Font="TwCenMT14" ColorSet="Beige_Black_Alpha" WrapWidth="198" />
+        <GridButton ID="EvolutionAction4" Anchor="L,T" Offset="65,77" Size="194,24" Style="SmallButton" Font="TwCenMT16" />
+      </Grid>
+      <Grid Anchor="L,T" Offset="289,139" Size="270,108" Style="Grid9DetailFive140">
+        <Image ID="EvolutionIcon5" Anchor="L,T" Offset="10,11" Size="48,48" />
+        <Label ID="EvolutionName5" Anchor="L,T" Offset="66,8" Font="TwCenMT20" ColorSet="Beige_Black_Alpha" />
+        <Label ID="EvolutionCost5" Anchor="L,T" Offset="66,32" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" />
+        <Label ID="EvolutionRequires5" Anchor="L,T" Offset="66,51" Font="TwCenMT14" ColorSet="Beige_Black_Alpha" WrapWidth="198" />
+        <GridButton ID="EvolutionAction5" Anchor="L,T" Offset="65,77" Size="194,24" Style="SmallButton" Font="TwCenMT16" />
+      </Grid>
+      <Grid Anchor="L,T" Offset="578,139" Size="270,108" Style="Grid9DetailFive140">
+        <Image ID="EvolutionIcon6" Anchor="L,T" Offset="10,11" Size="48,48" />
+        <Label ID="EvolutionName6" Anchor="L,T" Offset="66,8" Font="TwCenMT20" ColorSet="Beige_Black_Alpha" />
+        <Label ID="EvolutionCost6" Anchor="L,T" Offset="66,32" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" />
+        <Label ID="EvolutionRequires6" Anchor="L,T" Offset="66,51" Font="TwCenMT14" ColorSet="Beige_Black_Alpha" WrapWidth="198" />
+        <GridButton ID="EvolutionAction6" Anchor="L,T" Offset="65,77" Size="194,24" Style="SmallButton" Font="TwCenMT16" />
+      </Grid>
+      <Grid Anchor="L,T" Offset="289,278" Size="270,108" Style="Grid9DetailFive140">
+        <Image ID="EvolutionIcon7" Anchor="L,T" Offset="10,11" Size="48,48" />
+        <Label ID="EvolutionName7" Anchor="L,T" Offset="66,8" Font="TwCenMT20" ColorSet="Beige_Black_Alpha" />
+        <Label ID="EvolutionCost7" Anchor="L,T" Offset="66,32" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" />
+        <Label ID="EvolutionRequires7" Anchor="L,T" Offset="66,51" Font="TwCenMT14" ColorSet="Beige_Black_Alpha" WrapWidth="198" />
+        <GridButton ID="EvolutionAction7" Anchor="L,T" Offset="65,77" Size="194,24" Style="SmallButton" Font="TwCenMT16" />
+      </Grid>
+    </Container>
+    <Container ID="SwarmView" Anchor="L,T" Offset="20,155" Size="848,382" Hidden="1">
+      <Label ID="SwarmSummary" Anchor="L,T" Offset="12,8" Font="TwCenMT20" ColorSet="Beige_Black_Alpha" />
+      <ScrollPanel ID="SwarmScroll" Anchor="L,T" Offset="0,38" Size="848,344" Vertical="1" AutoScrollBar="1">
+        <Stack ID="SwarmStack" Anchor="L,T" StackGrowth="Bottom" Padding="5" />
+        <ScrollBar Anchor="R,C" AnchorSide="I,I" Offset="0,0" Length="344" Style="VertSlider" />
+      </ScrollPanel>
+    </Container>
+    <Label ID="Footer" Anchor="L,T" Offset="24,561" Font="TwCenMT17" ColorSet="Beige_Black_Alpha" WrapWidth="838" />
+  </Container>
+  <Instance Name="ARACHNID_SwarmRow">
+    <Grid ID="Root" Anchor="L,T" Size="815,68" Style="Grid9DetailFive140">
+      <Image ID="Icon" Anchor="L,T" Offset="9,10" Size="48,48" />
+      <Label ID="UnitName" Anchor="L,T" Offset="66,8" Font="TwCenMT20" ColorSet="Beige_Black_Alpha" />
+      <Label ID="UnitDetails" Anchor="L,T" Offset="66,37" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" WrapWidth="620" />
+      <GridButton ID="Locate" Anchor="L,T" Offset="677,17" Size="123,30" Style="SmallButton" Font="TwCenMT16" String="TXT_KEY_ARACHNID_LOCATE" />
+    </Grid>
+  </Instance>
+</Context>

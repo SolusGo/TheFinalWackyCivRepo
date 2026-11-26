@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameData>
+  <Language_en_US>
+    <Row Tag="TXT_KEY_ARACHNID_CIV"><Text>The Arachnid Empire</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_SHORT"><Text>Arachnid Empire</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_ADJECTIVE"><Text>Arachnid</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_QUEEN"><Text>The Spider Queen</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_TRAIT"><Text>Evolution Through Warfare</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_TRAIT_HELP"><Text>The Queen's Lair grants 2 Spawn Points per turn, and up to two Brood Chambers grant 1 each. Hostile major-civilization and city-state military kills grant 4 Spawn Points and 1 Evolution Point. The first five eligible barbarian kills in each era grant 1 Spawn Point each. Open the Arachnid Empire panel to spawn specialized units and purchase permanent evolutions. Spawned units occupy Control Points. Losing the original capital suspends passive income, spawning and evolution purchases.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_STRATEGY"><Text>Spend early Spawn Points on reinforcements and earn Evolution Points through military combat. Build two Brood Chambers for the full passive income. Develop Intelligence for a larger swarm, Venom Glands for ranged attrition, or Chitin Armour for a durable front line. Guard the Queen's Lair to keep the Brood growing.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CIV_PEDIA"><Text>The Brood learned to read the world through its silk. The tremor of a single boot could travel from the outer tunnels to the royal chamber, where scouts relayed its direction by plucking the strands. From that first network the Arachnid Empire grew. Its soldiers still deliver every discovery in the same way: one tug for danger, two for prey, three for a weakness worth carrying into the next generation.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_HISTORY_HEADING_1"><Text>Evolution Through Warfare</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_HISTORY_TEXT_1"><Text>The Queen's Lair produces 2 Spawn Points per turn. Up to two Brood Chambers add 1 each. Defeating a hostile major or city-state military unit grants 4 SP and 1 EP. The first five eligible barbarian military kills each era grant 1 SP each. The original capital must be owned to receive passive income and spend SP or EP. Combat income is retained during occupation.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_HISTORY_HEADING_2"><Text>Spawning and Evolution</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_HISTORY_TEXT_2"><Text>The Brood starts with 3 Control Points. A Broodling costs 45 SP and 1 CP. Venom Spiders cost 65 SP and 2 CP and require Venom Glands. Armoured Spiders cost 80 SP and 2 CP and require Chitin Armour. Add 15 SP per era after Ancient. Successful spawns share a cooldown of 1/1/2/3 turns on Quick/Standard/Epic/Marathon. Upgrades retain specialization. CP is released on death or permanent transfer. Use the Evolution tab to see era requirements, prerequisites and bonuses.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_QUEEN_PEDIA"><Text>Every fallen enemy brings us closer to perfection.[NEWLINE][NEWLINE]The Queen never forgets the shape of an enemy. She remembers how shield rims wore the silk, how bronze parted the shells of her first defenders, and how the surviving hatchlings found their way through the smoke. From the royal nest she directs the weaving of each new generation. The loss of a tunnel is a lesson. The loss of her lair is the one defeat she can feel in every strand.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_QUEEN_HISTORY_HEADING_1"><Text>Sovereign of the Brood</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_QUEEN_HISTORY_TEXT_1"><Text>Every fallen enemy brings us closer to perfection.[NEWLINE][NEWLINE]The fate of the Queen follows the original capital. Occupation halts passive Spawn Points and access to spawning and evolution purchases. Existing soldiers, evolutions, resources, and the Intelligence II Science bonus remain. Recover the original city to restore the suspended abilities.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_DAWN"><Text>Before the first kingdom raised its walls, the Brood had already learned the language of survival. Beneath the earth, generations fought and perished, leaving their strength to those that followed. From this struggle arose the Spider Queen, sovereign of an empire that could change faster than its enemies could learn.[NEWLINE][NEWLINE]Great Queen, your enemies possess weapons, cities and armies. You possess the strength of every brood that came before you. Let battle nourish your children, and let each generation surpass the last.[NEWLINE][NEWLINE]Will your descendants weave their dominion across the world? Can you build a civilization that stands the test of time?</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_WIDOW"><Text>Black Widow</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_WIDOW_HELP"><Text>Arachnid replacement for the Archer. Ranged Strength 8 instead of 7. Venom is exclusive to the Venom Spider specialization.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_WIDOW_STRATEGY"><Text>Use the Black Widow like an Archer, with greater Ranged Strength. A Widow trained or purchased in a city consumes no Control Points.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_WIDOW_PEDIA"><Text>A Widow was identified by the red hourglass on its abdomen and the sudden quiet that followed it. Hunters found that Widow silk could hold the tension of a fully drawn bow. The first line of defenders learned to fire through narrow cracks in the cavern walls, where an enemy could see the glimmer of the thread a heartbeat before release.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CHAMBER"><Text>Brood Chamber</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CHAMBER_HELP"><Text>Replaces the Barracks and retains its experience benefits. Generates 1 Spawn Point per turn while the original capital is held. Up to two chambers contribute. After Intelligence II, all owned Brood Chambers also provide 1 Science.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CHAMBER_STRATEGY"><Text>Build two Chambers to maximize passive Spawn Point income. After Intelligence II, every owned Chamber produces Science, including those beyond the Spawn Point cap.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CHAMBER_PEDIA"><Text>Silk partitions separate broods according to their age. At the entrance, veterans lay down trails that teach hatchlings to identify friend, foe and food. Farther in, shed shells are sorted by thickness and examined for fractures. The keepers can trace the lineage of an entire army through the material left behind on those shelves.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CHAMBER_SCIENCE"><Text>Brood Chamber research</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_GREETING_1"><Text>I am the Spider Queen. Your steps have reached my lair through a thousand strands. Speak, and I will decide which ones to keep.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_TITLE"><Text>Arachnid Empire</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CLOSE"><Text>Close</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_TAB_SPAWN"><Text>Spawn</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_TAB_EVOLUTION"><Text>Evolution</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_TAB_SWARM"><Text>Swarm</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_SPAWN"><Text>Spawn</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_EVOLVE"><Text>Evolve</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_LOCATE"><Text>Locate unit</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_SP_HELP"><Text>Spawn Points pay for the three biological variants.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_EP_HELP"><Text>Evolution Points buy permanent evolutions.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CP_HELP"><Text>Control Points measure the capacity occupied by living spawned units.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_SP_BALANCE"><Text>{1_Num} SP  (+{2_Num} per turn)</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_EP_BALANCE"><Text>{1_Num} EP</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CP_BALANCE"><Text>{1_Num} / {2_Num} CP</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_NEXT_SPAWN"><Text>Cooldown  {1_Num}</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_LAIR_OWNED"><Text>The Queen's Lair is held</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_LAIR_UNFOUNDED"><Text>Found the Queen's Lair to begin</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_LAIR_LOST"><Text>The Queen's Lair is occupied or lost</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_SPAWN_PRICE"><Text>{1_Num} SP  /  {2_Num} CP</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_SPAWN_BASE"><Text>Base unit: {1_Text}  •  Requires: {2_Text}</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_EVOLUTION_COST"><Text>{1_Num} EP  •  {2_Text}</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_NO_PREREQUISITE"><Text>None</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_UNKNOWN_UNIT"><Text>Unavailable</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_SPAWN_FOOTER"><Text>Spawn at the original capital or on an eligible adjacent tile. All variants share a cooldown.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_EVOLUTION_FOOTER"><Text>Lines show prerequisites. Hover over a node's icon to read its effects.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_SWARM_FOOTER"><Text>Locate a unit to select it on the map. Native upgrades retain its specialization and occupied capacity.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_SWARM_SUMMARY"><Text>{1_Num} living units  •  {2_Num} / {3_Num} Control Points occupied</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_SWARM_ROW"><Text>{1_Text}  •  {2_Num} CP  •  {3_Text}</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_EMPTY_SWARM"><Text>The swarm has no living spawned units.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_AVAILABLE"><Text>Available</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_LOCKED"><Text>Locked</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_EVOLVED"><Text>Evolved</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_INELIGIBLE"><Text>Use this action on your own active turn.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_NO_LAIR"><Text>Requires control of the Queen's Lair.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_ERA_LOCK"><Text>Requires the {1_Text}.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_EVOLUTION_LOCK"><Text>Requires {1_Text}.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_LOW_EP"><Text>Requires {1_Num} Evolution Points.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_LOW_SP"><Text>Requires {1_Num} Spawn Points.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_LOW_CP"><Text>Insufficient free Control Points.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_COOLDOWN_LOCK"><Text>Shared cooldown: {1_Num} turns remaining.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_NO_UNIT"><Text>No eligible base unit. Check technologies and strategic resources.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_NO_PLOT"><Text>No open land tile at or next to the Queen's Lair.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CREATE_FAILED"><Text>The game could not create a unit.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_BROODLING"><Text>Broodling</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_BROODLING_EFFECT"><Text>Basic melee reinforcement. Occupies 1 Control Point and retains its specialization through upgrades.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_VENOM"><Text>Venom Spider</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_VENOM_EFFECT"><Text>Ranged attrition unit. Damaging an enemy military unit poisons it for 5 HP on its next turn. Poison refreshes and leaves at least 1 HP.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_VENOM_UPGRADED"><Text>Ranged attrition unit. Neurotoxin raises newly inflicted poison to 10 HP. Poison refreshes and leaves at least 1 HP.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_ARMOURED"><Text>Armoured Spider</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_ARMOURED_EFFECT"><Text>Defensive frontline unit with +15% Combat Strength when defending.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_ARMOURED_UPGRADED"><Text>Defensive frontline unit with +15% Combat Strength when defending and 5 extra HP from normal resting heals.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_INTELLIGENCE_I"><Text>Intelligence I</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_INTELLIGENCE_I_EFFECT"><Text>Permanently adds 2 Control Points, bringing maximum capacity to 5.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_VENOM_GLANDS"><Text>Venom Glands</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_VENOM_GLANDS_EFFECT"><Text>Unlocks the Venom Spider. It poisons enemy military units through combat.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CHITIN_ARMOUR"><Text>Chitin Armour</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CHITIN_ARMOUR_EFFECT"><Text>Unlocks the Armoured Spider with +15% defensive Combat Strength.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_INTELLIGENCE_II"><Text>Intelligence II</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_INTELLIGENCE_II_EFFECT"><Text>Permanently adds 3 Control Points, bringing maximum capacity to 8. Every owned Brood Chamber provides +1 Science.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_NEUROTOXIN"><Text>Neurotoxin</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_NEUROTOXIN_EFFECT"><Text>New poison from existing and future Venom Spiders deals 10 HP instead of 5.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_REGENERATION"><Text>Regeneration</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_REGENERATION_EFFECT"><Text>Existing and future Armoured Spiders recover 5 extra HP when eligible for the engine's normal resting heal.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_APEX"><Text>Apex Evolution</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_APEX_EFFECT"><Text>All existing and future spawned arachnids gain +10% Combat Strength, including ranged combat.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_POISON"><Text>Arachnid Poison</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_POISON_EFFECT"><Text>At the beginning of this unit's next turn, take 5 or 10 damage, leaving at least 1 HP. The poison then expires.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_NOTICE_AVAILABLE"><Text>The Brood can afford its first evolution. Choose a path in the Evolution tab.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_NOTICE_EVOLVED"><Text>The Brood has evolved {1_Text}.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_NOTICE_MILESTONE"><Text>The Brood has reached a new milestone: {1_Text}.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_NOTICE_SPAWN"><Text>A {1_Text} has hatched near the Queen's Lair.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_NOTICE_POISON"><Text>A Venom Spider has poisoned its first target. The poison acts at the start of the enemy unit's next turn.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_NOTICE_LOST"><Text>The Queen's Lair is lost. Passive Spawn Points, spawning and evolution purchases are suspended.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_NOTICE_RECOVERED"><Text>The Queen's Lair is recovered. Passive Spawn Points, spawning and evolution purchases have resumed.</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CITY_1"><Text>The Queen's Lair</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CITY_2"><Text>Silken Hollow</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CITY_3"><Text>Venom Nest</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CITY_4"><Text>The Great Brood</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CITY_5"><Text>Blackweb</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CITY_6"><Text>Chitin Citadel</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CITY_7"><Text>Fang's Rest</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CITY_8"><Text>The Egg Chamber</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CITY_9"><Text>Widow's Domain</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CITY_10"><Text>The Endless Web</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CITY_11"><Text>Abyssal Nest</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CITY_12"><Text>The Last Lair</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CITY_13"><Text>The Crimson Burrow</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CITY_14"><Text>Webspinner's Reach</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CITY_15"><Text>The Hatchery</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CITY_16"><Text>Hollowfang</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CITY_17"><Text>The Silent Colony</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CITY_18"><Text>The Blackened Brood</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CITY_19"><Text>The Chitin Depths</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CITY_20"><Text>The Venomous Crown</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CITY_21"><Text>Eightfold Bastion</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CITY_22"><Text>The Woven Abyss</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CITY_23"><Text>The Forgotten Nest</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CITY_24"><Text>The Obsidian Hive</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_CITY_25"><Text>The Eternal Lair</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_SPY_1"><Text>Silk</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_SPY_2"><Text>Molt</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_SPY_3"><Text>Thread</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_SPY_4"><Text>Sable</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_SPY_5"><Text>Glint</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_SPY_6"><Text>Spindle</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_SPY_7"><Text>Quill</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_SPY_8"><Text>Hush</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_SPY_9"><Text>Gossamer</Text></Row>
+    <Row Tag="TXT_KEY_ARACHNID_SPY_10"><Text>Mire</Text></Row>
+  </Language_en_US>
+  <Civilization_CityNames>
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" CityName="TXT_KEY_ARACHNID_CITY_1" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" CityName="TXT_KEY_ARACHNID_CITY_2" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" CityName="TXT_KEY_ARACHNID_CITY_3" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" CityName="TXT_KEY_ARACHNID_CITY_4" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" CityName="TXT_KEY_ARACHNID_CITY_5" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" CityName="TXT_KEY_ARACHNID_CITY_6" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" CityName="TXT_KEY_ARACHNID_CITY_7" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" CityName="TXT_KEY_ARACHNID_CITY_8" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" CityName="TXT_KEY_ARACHNID_CITY_9" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" CityName="TXT_KEY_ARACHNID_CITY_10" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" CityName="TXT_KEY_ARACHNID_CITY_11" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" CityName="TXT_KEY_ARACHNID_CITY_12" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" CityName="TXT_KEY_ARACHNID_CITY_13" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" CityName="TXT_KEY_ARACHNID_CITY_14" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" CityName="TXT_KEY_ARACHNID_CITY_15" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" CityName="TXT_KEY_ARACHNID_CITY_16" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" CityName="TXT_KEY_ARACHNID_CITY_17" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" CityName="TXT_KEY_ARACHNID_CITY_18" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" CityName="TXT_KEY_ARACHNID_CITY_19" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" CityName="TXT_KEY_ARACHNID_CITY_20" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" CityName="TXT_KEY_ARACHNID_CITY_21" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" CityName="TXT_KEY_ARACHNID_CITY_22" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" CityName="TXT_KEY_ARACHNID_CITY_23" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" CityName="TXT_KEY_ARACHNID_CITY_24" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" CityName="TXT_KEY_ARACHNID_CITY_25" />
+  </Civilization_CityNames>
+  <Civilization_SpyNames>
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" SpyName="TXT_KEY_ARACHNID_SPY_1" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" SpyName="TXT_KEY_ARACHNID_SPY_2" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" SpyName="TXT_KEY_ARACHNID_SPY_3" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" SpyName="TXT_KEY_ARACHNID_SPY_4" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" SpyName="TXT_KEY_ARACHNID_SPY_5" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" SpyName="TXT_KEY_ARACHNID_SPY_6" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" SpyName="TXT_KEY_ARACHNID_SPY_7" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" SpyName="TXT_KEY_ARACHNID_SPY_8" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" SpyName="TXT_KEY_ARACHNID_SPY_9" />
+    <Row CivilizationType="CIVILIZATION_ARACHNID_EMPIRE" SpyName="TXT_KEY_ARACHNID_SPY_10" />
+  </Civilization_SpyNames>
+  <Diplomacy_Responses>
+    <Row LeaderType="LEADER_ARACHNID_SPIDER_QUEEN" ResponseType="RESPONSE_FIRST_GREETING"
+        Response="TXT_KEY_ARACHNID_GREETING_%" Bias="1" />
+  </Diplomacy_Responses>
+</GameData>

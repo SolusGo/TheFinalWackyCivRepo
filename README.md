@@ -1,6 +1,6 @@
 # FinalWackyFolder
 
-Each mod has its own folder and ModBuddy project file. The first project is [Cool Wacky Civs 4](CoolWackyCivs4/CoolWackyCivs4.civ5proj), a starter for the next installment.
+Each mod has its own folder and ModBuddy project file. [Cool Wacky Civs 4](CoolWackyCivs4/CoolWackyCivs4.civ5proj) introduces [The Arachnid Empire](CoolWackyCivs4/Civilizations/ArachnidEmpire/Documentation/README.md) for Brave New World with standalone Community Patch v151.
 
 ## Build with ModBuddy
 

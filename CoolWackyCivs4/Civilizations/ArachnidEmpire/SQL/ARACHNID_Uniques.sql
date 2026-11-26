@@ -1,0 +1,66 @@
+-- Copy the active BNW/CP baseline. Reset the ID so SQLite assigns a fresh one.
+CREATE TEMP TABLE ARACHNID_ArcherCopy AS SELECT * FROM Units WHERE Type = 'UNIT_ARCHER';
+UPDATE ARACHNID_ArcherCopy SET
+    ID = NULL, Type = 'UNIT_ARACHNID_BLACK_WIDOW', RangedCombat = 8,
+    Description = 'TXT_KEY_ARACHNID_WIDOW', Civilopedia = 'TXT_KEY_ARACHNID_WIDOW_PEDIA',
+    Strategy = 'TXT_KEY_ARACHNID_WIDOW_STRATEGY', Help = 'TXT_KEY_ARACHNID_WIDOW_HELP',
+    IconAtlas = 'ARACHNID_SPIDER_ATLAS', PortraitIndex = 0,
+    UnitFlagAtlas = 'ARACHNID_FLAG_ATLAS', UnitFlagIconOffset = 0;
+INSERT INTO Units SELECT * FROM ARACHNID_ArcherCopy;
+DROP TABLE ARACHNID_ArcherCopy;
+
+INSERT INTO Civilization_UnitClassOverrides (CivilizationType, UnitClassType, UnitType) VALUES
+    ('CIVILIZATION_ARACHNID_EMPIRE', 'UNITCLASS_ARCHER', 'UNIT_ARACHNID_BLACK_WIDOW');
+INSERT INTO Unit_ClassUpgrades (UnitType, UnitClassType)
+    SELECT 'UNIT_ARACHNID_BLACK_WIDOW', UnitClassType FROM Unit_ClassUpgrades WHERE UnitType = 'UNIT_ARCHER';
+INSERT INTO Unit_FreePromotions (UnitType, PromotionType)
+    SELECT 'UNIT_ARACHNID_BLACK_WIDOW', PromotionType FROM Unit_FreePromotions WHERE UnitType = 'UNIT_ARCHER';
+INSERT INTO Unit_AITypes (UnitType, UnitAIType)
+    SELECT 'UNIT_ARACHNID_BLACK_WIDOW', UnitAIType FROM Unit_AITypes WHERE UnitType = 'UNIT_ARCHER';
+INSERT INTO Unit_Flavors (UnitType, FlavorType, Flavor)
+    SELECT 'UNIT_ARACHNID_BLACK_WIDOW', FlavorType, Flavor FROM Unit_Flavors WHERE UnitType = 'UNIT_ARCHER';
+INSERT INTO UnitGameplay2DScripts (UnitType, SelectionSound, FirstSelectionSound)
+    SELECT 'UNIT_ARACHNID_BLACK_WIDOW', SelectionSound, FirstSelectionSound
+    FROM UnitGameplay2DScripts WHERE UnitType = 'UNIT_ARCHER';
+
+CREATE TEMP TABLE ARACHNID_BarracksCopy AS SELECT * FROM Buildings WHERE Type = 'BUILDING_BARRACKS';
+UPDATE ARACHNID_BarracksCopy SET
+    ID = NULL, Type = 'BUILDING_ARACHNID_BROOD_CHAMBER',
+    Description = 'TXT_KEY_ARACHNID_CHAMBER', Civilopedia = 'TXT_KEY_ARACHNID_CHAMBER_PEDIA',
+    Strategy = 'TXT_KEY_ARACHNID_CHAMBER_STRATEGY', Help = 'TXT_KEY_ARACHNID_CHAMBER_HELP',
+    IconAtlas = 'ARACHNID_BROOD_ATLAS', PortraitIndex = 0;
+INSERT INTO Buildings SELECT * FROM ARACHNID_BarracksCopy;
+DROP TABLE ARACHNID_BarracksCopy;
+
+INSERT INTO Civilization_BuildingClassOverrides (CivilizationType, BuildingClassType, BuildingType) VALUES
+    ('CIVILIZATION_ARACHNID_EMPIRE', 'BUILDINGCLASS_BARRACKS', 'BUILDING_ARACHNID_BROOD_CHAMBER');
+INSERT INTO Building_DomainFreeExperiences (BuildingType, DomainType, Experience)
+    SELECT 'BUILDING_ARACHNID_BROOD_CHAMBER', DomainType, Experience
+    FROM Building_DomainFreeExperiences WHERE BuildingType = 'BUILDING_BARRACKS';
+INSERT INTO Building_Flavors (BuildingType, FlavorType, Flavor)
+    SELECT 'BUILDING_ARACHNID_BROOD_CHAMBER', FlavorType, Flavor
+    FROM Building_Flavors WHERE BuildingType = 'BUILDING_BARRACKS';
+
+INSERT INTO BuildingClasses (Type, Description, DefaultBuilding) VALUES
+    ('BUILDINGCLASS_ARACHNID_CHAMBER_SCIENCE', 'TXT_KEY_ARACHNID_CHAMBER_SCIENCE', 'BUILDING_ARACHNID_CHAMBER_SCIENCE');
+INSERT INTO Buildings (
+    Type, BuildingClass, Description, Cost, FaithCost, NeverCapture, ConquestProb, NukeImmune,
+    ShowInPedia, IsDummy, GreatWorkCount, IconAtlas, PortraitIndex
+) VALUES (
+    'BUILDING_ARACHNID_CHAMBER_SCIENCE', 'BUILDINGCLASS_ARACHNID_CHAMBER_SCIENCE',
+    'TXT_KEY_ARACHNID_CHAMBER_SCIENCE', -1, -1, 1, 0, 1, 0, 1, -1, 'ARACHNID_EVOLUTION_ATLAS', 3
+);
+INSERT INTO Building_YieldChanges (BuildingType, YieldType, Yield) VALUES
+    ('BUILDING_ARACHNID_CHAMBER_SCIENCE', 'YIELD_SCIENCE', 1);
+
+-- No combat-class links: these are installed only by the lifecycle code.
+INSERT INTO UnitPromotions (
+    Type, Description, Help, CannotBeChosen, LostWithUpgrade, IconAtlas, PortraitIndex, Sound,
+    DefenseMod, CombatPercent, FriendlyHealChange, NeutralHealChange, EnemyHealChange
+) VALUES
+    ('PROMOTION_ARACHNID_BROODLING','TXT_KEY_ARACHNID_BROODLING','TXT_KEY_ARACHNID_BROODLING_EFFECT',1,0,'ARACHNID_SPIDER_ATLAS',1,'',0,0,0,0,0),
+    ('PROMOTION_ARACHNID_VENOM','TXT_KEY_ARACHNID_VENOM','TXT_KEY_ARACHNID_VENOM_EFFECT',1,0,'ARACHNID_SPIDER_ATLAS',2,'',0,0,0,0,0),
+    ('PROMOTION_ARACHNID_ARMOURED','TXT_KEY_ARACHNID_ARMOURED','TXT_KEY_ARACHNID_ARMOURED_EFFECT',1,0,'ARACHNID_SPIDER_ATLAS',3,'',15,0,0,0,0),
+    ('PROMOTION_ARACHNID_REGENERATION','TXT_KEY_ARACHNID_REGENERATION','TXT_KEY_ARACHNID_REGENERATION_EFFECT',1,0,'ARACHNID_EVOLUTION_ATLAS',5,'',0,0,5,5,5),
+    ('PROMOTION_ARACHNID_APEX','TXT_KEY_ARACHNID_APEX','TXT_KEY_ARACHNID_APEX_EFFECT',1,0,'ARACHNID_EVOLUTION_ATLAS',6,'',0,10,0,0,0),
+    ('PROMOTION_ARACHNID_POISON','TXT_KEY_ARACHNID_POISON','TXT_KEY_ARACHNID_POISON_EFFECT',1,1,'ARACHNID_EVOLUTION_ATLAS',7,'',0,0,0,0,0);
