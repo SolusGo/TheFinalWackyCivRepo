@@ -350,13 +350,40 @@ GameEvents.UnitKilledInCombat.fire(0,1,13,-1)
 GameEvents.BattleFinished.fire()
 expect(state.sp,before+12,"defensive and subsequent participant kills")
 
+-- Successful air-strike interception aborts the strike. RED reports the
+-- interceptor and suppresses principal damage, but CP's lethal callback uses the target owner.
+local function airDefense(targetOwner, targetID, interceptorOwner, interceptorID, interceptorDamage, retaliation)
+    local aircraft = makeUnit(enemy,14,false)
+    aircraft.ranged = true
+    GameEvents.BattleStarted.fire(2,1,2)
+    local finalDamage = interceptorDamage > 0 and 0 or retaliation
+    GameEvents.CombatResult.fire(1,aircraft.id,retaliation,finalDamage,100,targetOwner,targetID,0,0,100,
+        interceptorOwner,interceptorID,interceptorDamage,1,2)
+    aircraft.damage=100
+    GameEvents.UnitPrekill.fire(1,aircraft.id,14,1,2,true,targetOwner)
+    GameEvents.UnitKilledInCombat.fire(targetOwner,1,14,-1)
+    GameEvents.UnitKilledInCombat.fire(targetOwner,1,14,-1)
+    GameEvents.BattleFinished.fire()
+end
+local thirdPartyGuard = makeUnit(minor,15,true)
+local airSP, airEP = state.sp, state.ep
+airDefense(2,-1,0,conventional.id,100,0)
+expect(state.sp,airSP+4,"Arachnid interceptor over another owner's city")
+expect(state.ep,airEP+1)
+airDefense(0,conventional.id,2,thirdPartyGuard.id,100,0)
+expect(state.sp,airSP+4,"foreign interceptor over Arachnid target")
+airDefense(0,conventional.id,2,-1,100,0)
+expect(state.sp,airSP+4,"unidentified interceptor fails closed")
+airDefense(0,conventional.id,2,thirdPartyGuard.id,0,100)
+expect(state.sp,airSP+8,"ordinary retaliation after a failed interception")
+
 local expired = makeUnit(enemy,12,true)
 battleStart(conventional,expired)
 GameEvents.GameCoreUpdateEnd.fire()
 expired.damage=100
 GameEvents.UnitPrekill.fire(1,expired.id,12,1,2,true,0)
 GameEvents.UnitKilledInCombat.fire(0,1,12,-1)
-expect(state.sp,before+12,"expired combat cannot pay")
+expect(state.sp,airSP+8,"expired combat cannot pay")
 local retainedVenom = makeUnit(player,9,true)
 brood.applyBiology(retainedVenom,2,state)
 local unharmed = makeUnit(enemy,12,true)

@@ -1,7 +1,7 @@
 local brood = ARACHNID
 local poison = GameInfoTypes.PROMOTION_ARACHNID_POISON
 local attackerRole, defenderRole = 0, 1
-local melee, ranged = 0, 1
+local melee, ranged, air = 0, 1, 2
 local battle, generating
 local generated = {}
 local created = {}
@@ -37,7 +37,7 @@ GameEvents.BattleJoined.Add(function(owner, id, role, isCity)
 end)
 
 GameEvents.CombatResult.Add(function(attacker, attackerID, damageToAttacker, _, _,
-    defender, defenderID, damageToDefender, _, _, interceptor, interceptorID, _, x, y)
+    defender, defenderID, damageToDefender, _, _, interceptor, interceptorID, interceptionDamage, x, y)
     clearCombat()
     for index = #generated, 1, -1 do
         local candidate = generated[index]
@@ -66,6 +66,21 @@ GameEvents.CombatResult.Add(function(attacker, attackerID, damageToAttacker, _, 
     confirm(attackerRole, attacker, attackerID, damageToDefender)
     confirm(defenderRole, defender, defenderID, damageToAttacker)
     confirm(2, interceptor, interceptorID)
+    if battle.kind == air and (interceptionDamage or 0) > 0 then
+        local attackerUnit = battle.roles[attackerRole]
+        if attackerUnit and not attackerUnit.city and attackerUnit.owner == attacker and attackerUnit.id == attackerID then
+            -- CP aborts the strike and zeroes both principals' damage on a successful
+            -- interception, but reports lethal damage under the intended target's owner.
+            local interceptorUnit = battle.roles[2]
+            local creditedOwner
+            if damageToAttacker == 0 and damageToDefender == 0 and interceptorUnit and not interceptorUnit.city
+                and interceptorUnit.owner == interceptor and interceptorUnit.id == interceptorID
+                and brood.liveUnit(interceptor, interceptorID) then
+                creditedOwner = interceptor
+            end
+            battle.interception = {victim=attacker .. ":" .. attackerID, nativeKiller=defender, owner=creditedOwner}
+        end
+    end
     if battle.kind == ranged and attacker == -1 and attackerID == -1
         and defender and defender >= 0 and defenderID and defenderID >= 0 and (damageToDefender or 0) > 0 then
         battle.cityTarget = defender .. ":" .. defenderID
@@ -76,10 +91,18 @@ GameEvents.UnitPrekill.Add(function(owner, id, kind, _, _, delayed, killer)
     brood.clearPoison(owner, id)
     if brood.eligible(Players[owner]) then brood.dirty() end
 
-    local player, victim = Players[killer], Players[owner]
+    if not battle or not battle.sources or not delayed then return end
     local identity = owner .. ":" .. id
-    if not battle or not battle.sources or not (battle.sources[killer] or battle.cityTarget == identity) or not delayed
-        or not brood.eligible(player) or not brood.hostile(player, victim) then return end
+    local beneficiary = killer
+    local interception = battle.interception
+    if interception and interception.victim == identity then
+        if killer ~= interception.nativeKiller or interception.owner == nil then return end
+        beneficiary = interception.owner
+    elseif not (battle.sources[killer] or battle.cityTarget == identity) then
+        return
+    end
+    local player, victim = Players[beneficiary], Players[owner]
+    if not brood.eligible(player) or not brood.hostile(player, victim) then return end
     local unit = victim:GetUnitByID(id)
     -- Delayed death is the first callback for damage-driven death. The immediate
     -- callback, voluntary removals, gifting and upgrade cleanup cannot qualify.
@@ -88,19 +111,21 @@ GameEvents.UnitPrekill.Add(function(owner, id, kind, _, _, delayed, killer)
         local key = killer .. ":" .. owner .. ":" .. kind
         -- setDamage confirms synchronously; ambiguous matches fail closed.
         local pending = battle.pending[key]
-        if pending == nil then battle.pending[key] = identity
-        elseif pending ~= identity then battle.pending[key] = false end
+        if pending == nil then battle.pending[key] = {identity=identity, beneficiary=beneficiary}
+        elseif pending and pending.identity ~= identity then battle.pending[key] = false end
     end
 end)
 
 GameEvents.UnitKilledInCombat.Add(function(killer, owner, kind)
     if not battle then return end
     local key = killer .. ":" .. owner .. ":" .. kind
-    local identity = battle.pending[key]
+    local confirmed = battle.pending[key]
     battle.pending[key] = nil
-    if not identity or battle.rewarded[identity] or not brood.eligible(Players[killer]) then return end
-    battle.rewarded[identity] = true
-    brood.reward(Players[killer], Players[owner]:IsBarbarian())
+    if not confirmed or battle.rewarded[confirmed.identity] then return end
+    local player = Players[confirmed.beneficiary]
+    if not brood.eligible(player) then return end
+    battle.rewarded[confirmed.identity] = true
+    brood.reward(player, Players[owner]:IsBarbarian())
     brood.dirty()
 end)
 
