@@ -3,8 +3,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
     <Name>Cool Wacky Civs 4</Name>
-    <Teaser>Lead the Arachnid Empire or the Scorpion Dominion.</Teaser>
-    <Description>The Arachnid Empire and the Scorpion Dominion for Civilization V: Brave New World and Community Patch v151.</Description>
+    <Teaser>Lead the Arachnid Empire, the Scorpion Dominion, or the Werribee Property Network.</Teaser>
+    <Description>The Arachnid Empire, the Scorpion Dominion, and the Werribee Property Network for Civilization V: Brave New World and Community Patch v151.</Description>
     <Authors>SolusGo</Authors>
     <Homepage>https://github.com/SolusGo/TheFinalWackyCivRepo</Homepage>
     <Guid>4e2d7f10-235f-4323-95ec-6bda1a25d27a</Guid>
@@ -66,6 +66,26 @@
         <Type>UpdateDatabase</Type>
         <FileName>Civilizations/ScorpionDominion/Text/SDOM_Text.xml</FileName>
       </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>Civilizations/WerribeePropertyNetwork/SQL/WERRIBEE_Civilization.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>Civilizations/WerribeePropertyNetwork/SQL/WERRIBEE_Uniques.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>Civilizations/WerribeePropertyNetwork/XML/WERRIBEE_Atlases.xml</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>Civilizations/WerribeePropertyNetwork/Text/WERRIBEE_Text.xml</FileName>
+      </Action>
     </ModActions>
     <ModContent>
       <Content>
@@ -79,6 +99,12 @@
         <Name>Scorpion Dominion</Name>
         <Description>Ascendant gameplay, save state, and the Overlord's War Council.</Description>
         <FileName>Civilizations/ScorpionDominion/UI/SDOM_Council.xml</FileName>
+      </Content>
+      <Content>
+        <Type>InGameUIAddin</Type>
+        <Name>Werribee Property Network</Name>
+        <Description>City economy, population milestones, and consultant gameplay.</Description>
+        <FileName>Civilizations/WerribeePropertyNetwork/UI/WERRIBEE_Gameplay.xml</FileName>
       </Content>
     </ModContent>
     <ModDependencies>
@@ -444,6 +470,93 @@
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
     <Content Include="Civilizations/ScorpionDominion/XML/SDOM_Atlases.xml">
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/Art/WERRIBEE_Alpha128.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/Art/WERRIBEE_Alpha16.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/Art/WERRIBEE_Alpha24.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/Art/WERRIBEE_Alpha256.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/Art/WERRIBEE_Alpha32.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/Art/WERRIBEE_Alpha45.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/Art/WERRIBEE_Alpha48.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/Art/WERRIBEE_Alpha64.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/Art/WERRIBEE_Alpha80.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/Art/WERRIBEE_Dawn.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/Art/WERRIBEE_Diplomacy.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/Art/WERRIBEE_Flag32.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/Art/WERRIBEE_LeaderScene.xml">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/Art/WERRIBEE_Map.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/Art/WERRIBEE_Portrait128.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/Art/WERRIBEE_Portrait16.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/Art/WERRIBEE_Portrait24.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/Art/WERRIBEE_Portrait256.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/Art/WERRIBEE_Portrait32.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/Art/WERRIBEE_Portrait45.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/Art/WERRIBEE_Portrait48.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/Art/WERRIBEE_Portrait64.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/Art/WERRIBEE_Portrait80.dds">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/Lua/WerribeePropertyNetwork.lua">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/SQL/WERRIBEE_Civilization.sql">
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/SQL/WERRIBEE_Uniques.sql">
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/Text/WERRIBEE_Text.xml">
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/UI/WERRIBEE_Gameplay.xml">
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="Civilizations/WerribeePropertyNetwork/XML/WERRIBEE_Atlases.xml">
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
   </ItemGroup>

@@ -10,6 +10,8 @@ from xml.etree import ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 CIV = ROOT / "Civilizations" / "ArachnidEmpire"
 DOMINION = ROOT / "Civilizations" / "ScorpionDominion"
+WERRIBEE = ROOT / "Civilizations" / "WerribeePropertyNetwork"
+CIVILIZATIONS = (CIV, DOMINION, WERRIBEE)
 GUID = "4e2d7f10-235f-4323-95ec-6bda1a25d27a"
 CP_GUID = "d1b6328c-ff44-4b0d-aad7-c657f83610cd"
 NS = {"m": "http://schemas.microsoft.com/developer/msbuild/2003"}
@@ -28,20 +30,25 @@ def source():
         path = item.attrib["Include"]
         assert path not in registrations and "/" in path and (ROOT / path).is_file(), path
         registrations[path] = findtext(item, "m:ImportIntoVFS").lower() == "true"
-    gameplay = {p.relative_to(ROOT).as_posix() for civ in (CIV, DOMINION) for p in civ.rglob("*")
+    gameplay = {p.relative_to(ROOT).as_posix() for civ in CIVILIZATIONS for p in civ.rglob("*")
                 if p.is_file() and "Documentation" not in p.parts}
     assert gameplay == registrations.keys(), (gameplay - registrations.keys(), registrations.keys() - gameplay)
     actions = [findtext(node, "m:FileName") for node in project.findall(".//m:ModActions/m:Action", NS)]
-    assert len(actions) == len(set(actions)) == 8
+    assert len(actions) == len(set(actions)) == 12
     assert all(not registrations[path] for path in actions)
     assert all(imported for path, imported in registrations.items() if path not in actions)
     addins = [findtext(node, "m:FileName") for node in project.findall(".//m:ModContent/m:Content", NS)]
-    assert [Path(addin).name for addin in addins] == ["ARACHNID_Console.xml", "SDOM_Council.xml"]
+    assert [Path(addin).name for addin in addins] == [
+        "ARACHNID_Console.xml", "SDOM_Council.xml", "WERRIBEE_Gameplay.xml",
+    ]
     for addin in addins:
         assert registrations[addin]
         ui = ET.parse(ROOT / addin)
         script = ui.find("./Script").attrib["file"]
-        assert registrations[Path(addin).with_name(script).as_posix()]
+        relative = Path(addin).parent.parent
+        assert sum(path in registrations and registrations[path] for path in [
+            Path(addin).with_name(script).as_posix(), (relative / "Lua" / script).as_posix(),
+        ]) == 1
     cp, = [node for node in project.findall(".//m:ModDependencies/m:Association", NS)
            if findtext(node, "m:Id") == CP_GUID]
     assert findtext(cp, "m:MinVersion") == findtext(cp, "m:MaxVersion") == "151"
@@ -60,9 +67,10 @@ def source():
             else:
                 assert key in keys, (path.name, key)
     dominion_locale()
+    werribee_locale()
     runtime_names = [Path(path).name.lower() for path in registrations]
     assert len(runtime_names) == len(set(runtime_names))
-    for civ in (CIV, DOMINION):
+    for civ in CIVILIZATIONS:
         for path in civ.rglob("*.xml"):
             ET.parse(path)
     return registrations, actions, addins
@@ -83,6 +91,20 @@ def dominion_locale():
     for path in DOMINION.rglob("*.lua"):
         for key in re.findall(r'"((?:ERR|REASON)_[A-Z_]+)"', path.read_text(encoding="utf8")):
             assert "TXT_KEY_SDOM_" + key in keys, (path, key)
+
+
+def werribee_locale():
+    language = ET.parse(WERRIBEE / "Text/WERRIBEE_Text.xml")
+    rows = language.findall("./Language_en_US/Row")
+    keys = {row.attrib["Tag"] for row in rows}
+    assert len(rows) == len(keys)
+    for path in WERRIBEE.glob("SQL/*.sql"):
+        for key in re.findall(r"TXT_KEY_WERRIBEE_[A-Z0-9_]+", path.read_text(encoding="utf8")):
+            assert key in keys or key + "_HEADING_1" in keys and key + "_TEXT_1" in keys, (path, key)
+    for row in language.findall("./Diplomacy_Responses/Row"):
+        assert row.attrib["Response"].replace("%", "1") in keys
+    for key in ("SALE_BODY", "SALE_TITLE", "MISSION_BODY", "MISSION_TITLE", "LYNNE_TITLE"):
+        assert "TXT_KEY_WERRIBEE_" + key in keys
 
 
 def database(cache, actions):
@@ -146,6 +168,7 @@ def database(cache, actions):
             row = one("SELECT Domain, RangedCombat, Range, PrereqTech FROM Units WHERE Type=?", "UNIT_" + name)
             assert row[0] == "DOMAIN_LAND" and row[1] > 0 and row[2] > 0 and row[3]
         dominion_database(db, one)
+        werribee_database(db, one)
         print("BNW + Community Patch database validation passed.")
 
 
@@ -196,8 +219,97 @@ def dominion_database(db, one):
         assert one("SELECT Value FROM CustomModOptions WHERE Name=?", option) == (1,)
 
 
+def werribee_database(db, one):
+    civ = "CIVILIZATION_WERRIBEE_PROPERTY_NETWORK"
+    leader = "LEADER_LYNNE_STEINHAUER"
+    unit = "UNIT_WERRIBEE_SENIOR_SALES_CONSULTANT"
+    office = "BUILDING_WERRIBEE_REAL_ESTATE_OFFICE"
+    assert one("SELECT Playable, AIPlayable FROM Civilizations WHERE Type=?", civ) == (1, 1)
+    assert one("""SELECT IconAtlas, AlphaIconAtlas, PortraitIndex, MapImage, DawnOfManImage
+                  FROM Civilizations WHERE Type=?""", civ) == (
+        "WERRIBEE_ATLAS", "WERRIBEE_ALPHA_ATLAS", 0, "WERRIBEE_Map.dds", "WERRIBEE_Dawn.dds",
+    )
+    assert one("SELECT ArtDefineTag, IconAtlas, PortraitIndex FROM Leaders WHERE Type=?", leader) == (
+        "WERRIBEE_LeaderScene.xml", "WERRIBEE_ATLAS", 1,
+    )
+    scene = ET.parse(WERRIBEE / "Art/WERRIBEE_LeaderScene.xml").getroot()
+    assert scene.attrib["FallbackImage"] == "WERRIBEE_Diplomacy.dds"
+    assert one("SELECT IconAtlas, PortraitIndex, UnitFlagAtlas, UnitFlagIconOffset FROM Units WHERE Type=?",
+               unit) == ("WERRIBEE_ATLAS", 2, "WERRIBEE_FLAG_ATLAS", 0)
+    assert one("SELECT IconAtlas, PortraitIndex FROM Buildings WHERE Type=?", office) == ("WERRIBEE_ATLAS", 3)
+    assert one("SELECT LeaderheadType FROM Civilization_Leaders WHERE CivilizationType=?", civ) == (leader,)
+    assert one("SELECT TraitType FROM Leader_Traits WHERE LeaderType=?", leader) == ("TRAIT_SOLD_UNDER_THE_HAMMER",)
+    assert one("SELECT PrimaryVictoryPursuit, SecondaryVictoryPursuit FROM Leaders WHERE Type=?", leader) == (
+        "VICTORY_PURSUIT_DIPLOMACY", "VICTORY_PURSUIT_SCIENCE",
+    )
+    for table, column, label, count in (
+        ("Civilization_CityNames", "CityName", "CITY", 25), ("Civilization_SpyNames", "SpyName", "SPY", 10),
+    ):
+        query = f"SELECT {column} FROM {table} WHERE CivilizationType=? ORDER BY rowid"
+        assert db.execute(query, (civ,)).fetchall() == [(f"TXT_KEY_WERRIBEE_{label}_{i}",) for i in range(1, count + 1)]
+    assert one("SELECT UnitClassType, UnitType FROM Civilization_UnitClassOverrides WHERE CivilizationType=?", civ) == (
+        "UNITCLASS_MERCHANT", unit,
+    )
+    assert one("SELECT BuildingClassType, BuildingType FROM Civilization_BuildingClassOverrides WHERE CivilizationType=?", civ) == (
+        "BUILDINGCLASS_MARKET", office,
+    )
+    shared_exclusions = {"ID", "Type", "Description", "Civilopedia", "Strategy", "Help", "IconAtlas", "PortraitIndex"}
+    for table, original, clone, column, excluded in (
+        ("Units", "UNIT_MERCHANT", unit, "UnitType", shared_exclusions | {"UnitFlagAtlas", "UnitFlagIconOffset"}),
+        ("Buildings", "BUILDING_MARKET", office, "BuildingType", shared_exclusions),
+    ):
+        fields = ", ".join(row[1] for row in db.execute(f"PRAGMA table_info({table})") if row[1] not in excluded)
+        query = f"SELECT {fields} FROM {table} WHERE Type=?"
+        assert one(query, original) == one(query, clone)
+        for related, in db.execute("SELECT name FROM sqlite_master WHERE type='table' AND name LIKE ?",
+                                   ("Unit%" if table == "Units" else "Building_%",)):
+            fields = [row[1] for row in db.execute(f"PRAGMA table_info({related})")]
+            if column not in fields or related == "Building_ImprovementYieldChanges":
+                continue
+            rest = ", ".join(field for field in fields if field not in (column, "ID"))
+            query = f"SELECT {rest} FROM {related} WHERE {column}=? ORDER BY {rest}"
+            assert db.execute(query, (original,)).fetchall() == db.execute(query, (clone,)).fetchall(), related
+    assert one("SELECT PrereqTech FROM Buildings WHERE Type=?", office) == ("TECH_CURRENCY",)
+    assert one("SELECT BuildType FROM Unit_Builds WHERE UnitType=?", unit) == ("BUILD_CUSTOMS_HOUSE",)
+    assert one("SELECT GreatPeopleUnitClass FROM Specialists WHERE Type='SPECIALIST_MERCHANT'") == ("UNITCLASS_MERCHANT",)
+    assert one("""SELECT OutsideBorders, InAdjacentFriendly, InEnemyTerritory, IgnoreOwnership
+                  FROM Improvements WHERE Type='IMPROVEMENT_CUSTOMS_HOUSE'""") == (0, 0, 0, 0)
+    assert db.execute("""SELECT ImprovementType, YieldType, Yield FROM Building_ImprovementYieldChanges
+                         WHERE BuildingType=? ORDER BY ImprovementType""", (office,)).fetchall() == [
+        (f"IMPROVEMENT_{improvement}", "YIELD_GOLD", 1) for improvement in ("FARM", "PASTURE", "TRADING_POST")
+    ]
+    for suffix, flat, gold, production, great_people, building_production in [
+        ("PRIME_REAL_ESTATE", 1, 0, 0, 0, 0), ("PROPERTY_SALE", 0, 0, 10, 0, 0),
+        ("CONNECTED_SUBURB", 0, 5, 5, 0, 0), ("CONNECTED_METROPOLIS", 0, 10, 10, 0, 0),
+        ("APPRAISAL_YIELD", 1, 0, 0, 0, 0), ("APPRAISAL_MODIFIER", 0, 10, 0, 0, 0),
+        ("VENDOR_NETWORK", 0, 15, 0, 15, 0), ("HOUSING_DEMAND", 1, 0, 0, 0, 0),
+        ("PROPERTY_BOOM", 0, 0, 0, 0, 10),
+    ]:
+        building = "BUILDING_WERRIBEE_DUMMY_" + suffix
+        assert one("""SELECT Cost, FaithCost, GoldMaintenance, NeverCapture, ConquestProb, ShowInPedia, IsDummy,
+                             GreatPeopleRateModifier, BuildingProductionModifier FROM Buildings WHERE Type=?""",
+                   building) == (-1, -1, 0, 1, 0, 0, 1, great_people, building_production)
+        assert db.execute("SELECT YieldType, Yield FROM Building_YieldChanges WHERE BuildingType=?",
+                          (building,)).fetchall() == ([("YIELD_GOLD", flat)] if flat else [])
+        assert db.execute("""SELECT YieldType, Yield FROM Building_YieldModifiers WHERE BuildingType=?
+                             ORDER BY YieldType""", (building,)).fetchall() == [
+            (kind, amount) for kind, amount in [("YIELD_GOLD", gold), ("YIELD_PRODUCTION", production)] if amount
+        ]
+    for option in ("EVENTS_CITY", "EVENTS_CITY_CAPITAL", "EVENTS_GREAT_PEOPLE", "EVENTS_PLAYER_TURN",
+                   "EVENTS_TILE_IMPROVEMENTS", "EVENTS_UNIT_CREATED", "EVENTS_UNIT_CONVERTS", "EVENTS_UNIT_PREKILL"):
+        assert one("SELECT Value FROM CustomModOptions WHERE Name=?", option) == (1,)
+    for column, table in [
+        ("FlavorType", "Flavors"), ("MajorCivApproachType", "MajorCivApproachTypes"),
+        ("MinorCivApproachType", "MinorCivApproachTypes"),
+    ]:
+        relation = {"FlavorType": "Leader_Flavors", "MajorCivApproachType": "Leader_MajorCivApproachBiases",
+                    "MinorCivApproachType": "Leader_MinorCivApproachBiases"}[column]
+        query = f"SELECT {column} FROM {relation} WHERE LeaderType=? EXCEPT SELECT Type FROM {table}"
+        assert db.execute(query, (leader,)).fetchall() == []
+
+
 def assets():
-    for civ, prefix in ((CIV, "ARACHNID"), (DOMINION, "SDOM")):
+    for civ, prefix in ((CIV, "ARACHNID"), (DOMINION, "SDOM"), (WERRIBEE, "WERRIBEE")):
         atlas_assets(civ, prefix)
     print("DDS references and dimensions passed.")
 
@@ -212,7 +324,10 @@ def atlas_assets(civ, prefix):
             header = handle.read(128)
         assert header[:4] == b"DDS " and struct.unpack_from("<II", header, 12) == (height, width), asset.name
     sizes = {"Dawn": (1024, 768), "Diplomacy": (1280, 960), "Map": (360, 410)}
-    sizes.update({"Panel": (888, 608), "Tree": (848, 388)} if civ == CIV else {"Panel": (904, 624)})
+    if civ == CIV:
+        sizes.update({"Panel": (888, 608), "Tree": (848, 388)})
+    elif civ == DOMINION:
+        sizes["Panel"] = (904, 624)
     for name, size in sizes.items():
         header = (civ / "Art" / f"{prefix}_{name}.dds").read_bytes()[:128]
         assert header[:4] == b"DDS " and struct.unpack_from("<II", header, 12)[::-1] == size, name

@@ -1,0 +1,246 @@
+<?xml version='1.0' encoding='utf-8'?>
+<GameData>
+  <Language_en_US>
+    <Row Tag="TXT_KEY_WERRIBEE_CIV">
+      <Text>Werribee Property Network</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_SHORT">
+      <Text>Werribee</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_LYNNE">
+      <Text>Lynne Steinhauer</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_LYNNE_TITLE">
+      <Text>Senior Sales Consultant</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_TRAIT">
+      <Text>Sold Under the Hammer</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_TRAIT_HELP">
+      <Text>Worked, unpillaged improvements adjacent to their city provide +1 [ICON_GOLD] Gold to that city. Eligible buildings completed with [ICON_PRODUCTION] Production earn 20% of their full Production cost as Gold once per building class per city. Each new [ICON_CITIZEN] Population milestone has a 25% chance to trigger a Property Sale. A sale earns 10 Gold per new Population, scaled by era and game speed, and provides +10% city Production for 5 turns on Standard speed. Non-capital cities connected to the capital gain +5% Gold and Production, rising to +10% at 10 Population.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CIV_STRATEGY">
+      <Text>Develop and work the tiles around your cities, invest in infrastructure, and connect your growing suburbs. Cultivate City-State alliances with the proceeds of your Trade Missions.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CIV_PEDIA">
+      <Text>A fictional commercial civilization inspired by real-estate work in Werribee, Victoria, Australia.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_HISTORY_HEADING_1">
+      <Text>From Werribee to the world</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_HISTORY_TEXT_1">
+      <Text>In this fictional setting, a network of bustling suburbs grows along the western edge of Melbourne. Real Estate Offices coordinate development and dispatch Senior Sales Consultants across the world. Their success depends on productive land, well-connected neighbourhoods and durable partnerships with City-States.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_LYNNE_PEDIA">
+      <Text>Senior Sales Consultant Lynne Steinhauer leads the Werribee Property Network.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_LYNNE_HISTORY_HEADING_1">
+      <Text>Lynne Steinhauer</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_LYNNE_HISTORY_TEXT_1">
+      <Text>Lynne's role as a Senior Sales Consultant in Werribee inspired this fictional strategy-game leader. Her in-game dialogue, political career and accomplishments are creative game content.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CONSULTANT">
+      <Text>Senior Sales Consultant</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CONSULTANT_HELP">
+      <Text>Replaces the Great Merchant. Can build a Customs House or conduct a City-State Trade Mission. While stationed in the centre of an owned city, adds +1 [ICON_GOLD] Gold for each improved, unpillaged adjacent tile worked by that city and +10% city Gold. Only one appraisal applies per city. A successful Trade Mission earns 25 extra Gold per current [ICON_CITIZEN] Population in the origin city, with the capital as fallback. It also gives that city +15% Gold and Great Person generation for 10 turns on Standard speed.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CONSULTANT_STRATEGY">
+      <Text>Station a Consultant in a developed city for Local Market Appraisal. Send one from a populous city on a Trade Mission for extra Gold and a temporary Vendor Network. A new mission refreshes the duration.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CONSULTANT_PEDIA">
+      <Text>The Senior Sales Consultant brings local knowledge to Werribee's busiest neighbourhoods and builds commercial partnerships with City-States. Like other Great Merchants, a Consultant may establish a Customs House.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_OFFICE">
+      <Text>Real Estate Office</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_OFFICE_HELP">
+      <Text>Replaces the Market and keeps its benefits. Worked, unpillaged Farms, Pastures and Trading Posts throughout the city's workable radius yield +1 [ICON_GOLD] Gold. Adds 1 flat Gold per 3 current [ICON_CITIZEN] Population. Each new Population milestone earns 5 Gold per new Population, scaled by game speed. While accumulating surplus [ICON_FOOD] Food toward growth, the city gains +10% [ICON_PRODUCTION] Production toward buildings.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_OFFICE_STRATEGY">
+      <Text>Build a Real Estate Office in a growing city with Farms, Pastures or Trading Posts. Property Boom requires positive net Food and growth enabled. It stops during resistance or when Food is diverted to Production.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_OFFICE_PEDIA">
+      <Text>Werribee's Real Estate Offices connect buyers, builders and growing neighbourhoods. Their local knowledge turns development and new residents into revenue.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_DAWN">
+      <Text>Welcome, Lynne Steinhauer, trusted negotiator and architect of prosperity. From the growing streets of Werribee, families seek homes, merchants seek opportunity, and new communities rise where once there was open land. Through keen appraisal and careful negotiation, every plot may become an opportunity and every growing suburb a source of prosperity.[NEWLINE][NEWLINE]Build thriving communities, connect your cities, and allow commerce to follow population wherever it grows. Let your agents travel abroad and return with fortunes while your citizens transform humble settlements into prosperous centres.[NEWLINE][NEWLINE]Will you build a market whose influence stretches beyond Werribee? Will the world one day declare that everything has its price? Can you build a civilization that will stand the test of time?</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_SALE_TITLE">
+      <Text>PROPERTY SOLD!</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_SALE_BODY">
+      <Text>A property in {1_City} has been sold, generating {2_Gold} Gold and stimulating local development for {3_Turns} turns.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_MISSION_TITLE">
+      <Text>VENDOR NETWORK</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_MISSION_BODY">
+      <Text>The Trade Mission earned {2_Gold} extra Gold. {1_City} gains +15% Gold and Great Person generation for {3_Turns} turns.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_INTERNAL">
+      <Text>Werribee city yield</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CITY_1">
+      <Text>Werribee</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CITY_2">
+      <Text>Hoppers Crossing</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CITY_3">
+      <Text>Point Cook</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CITY_4">
+      <Text>Tarneit</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CITY_5">
+      <Text>Wyndham Vale</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CITY_6">
+      <Text>Truganina</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CITY_7">
+      <Text>Williams Landing</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CITY_8">
+      <Text>Manor Lakes</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CITY_9">
+      <Text>Werribee South</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CITY_10">
+      <Text>Little River</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CITY_11">
+      <Text>Laverton</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CITY_12">
+      <Text>Altona</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CITY_13">
+      <Text>Altona Meadows</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CITY_14">
+      <Text>Seabrook</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CITY_15">
+      <Text>Newport</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CITY_16">
+      <Text>Spotswood</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CITY_17">
+      <Text>Yarraville</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CITY_18">
+      <Text>Footscray</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CITY_19">
+      <Text>Sunshine</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CITY_20">
+      <Text>Deer Park</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CITY_21">
+      <Text>Caroline Springs</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CITY_22">
+      <Text>Melton</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CITY_23">
+      <Text>Rockbank</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CITY_24">
+      <Text>Derrimut</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_CITY_25">
+      <Text>Kingsville</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_SPY_1">
+      <Text>The Vendor</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_SPY_2">
+      <Text>The Buyer</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_SPY_3">
+      <Text>The Auctioneer</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_SPY_4">
+      <Text>The Conveyancer</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_SPY_5">
+      <Text>The Inspector</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_SPY_6">
+      <Text>The Broker</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_SPY_7">
+      <Text>The Developer</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_SPY_8">
+      <Text>The Investor</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_SPY_9">
+      <Text>The Landlord</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_SPY_10">
+      <Text>The Appraiser</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_GREETING_1">
+      <Text>Welcome. Werribee has been growing quickly. Perhaps there's an opportunity here for both of us.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_FRIENDLY_1">
+      <Text>Good relationships are rather like good properties. Look after them, and their value tends to grow.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_NEUTRAL_1">
+      <Text>What can I help you with?</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_HOSTILE_1">
+      <Text>I'm afraid I don't believe there's much value in this arrangement.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_DECLARE_1">
+      <Text>Negotiations appear to have failed. We'll have to settle this another way.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_ATTACKED_1">
+      <Text>You'll find we're considerably harder to move than you expected.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_DEFEATED_1">
+      <Text>Everything changes hands eventually. Today, it seems, it was ours.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_ACCEPT_TRADE_1">
+      <Text>I believe we've found an arrangement that benefits both parties.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_REJECT_TRADE_1">
+      <Text>I'm afraid that offer falls considerably below market value.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_PEACE_1">
+      <Text>Excellent. Now we can return to developing our communities.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_WERRIBEE_DENOUNCE_1">
+      <Text>Word travels quickly when someone develops a poor reputation.</Text>
+    </Row>
+  </Language_en_US>
+  <Diplomacy_Responses>
+    <Row LeaderType="LEADER_LYNNE_STEINHAUER" ResponseType="RESPONSE_FIRST_GREETING" Response="TXT_KEY_WERRIBEE_GREETING_%" Bias="1" />
+    <Row LeaderType="LEADER_LYNNE_STEINHAUER" ResponseType="RESPONSE_GREETING_POLITE_HELLO" Response="TXT_KEY_WERRIBEE_FRIENDLY_%" Bias="1" />
+    <Row LeaderType="LEADER_LYNNE_STEINHAUER" ResponseType="RESPONSE_GREETING_NEUTRAL_HELLO" Response="TXT_KEY_WERRIBEE_NEUTRAL_%" Bias="1" />
+    <Row LeaderType="LEADER_LYNNE_STEINHAUER" ResponseType="RESPONSE_GREETING_HOSTILE_HELLO" Response="TXT_KEY_WERRIBEE_HOSTILE_%" Bias="1" />
+    <Row LeaderType="LEADER_LYNNE_STEINHAUER" ResponseType="RESPONSE_DOW_GENERIC" Response="TXT_KEY_WERRIBEE_DECLARE_%" Bias="1" />
+    <Row LeaderType="LEADER_LYNNE_STEINHAUER" ResponseType="RESPONSE_ATTACKED_HOSTILE" Response="TXT_KEY_WERRIBEE_ATTACKED_%" Bias="1" />
+    <Row LeaderType="LEADER_LYNNE_STEINHAUER" ResponseType="RESPONSE_ATTACKED_WARMONGER" Response="TXT_KEY_WERRIBEE_ATTACKED_%" Bias="1" />
+    <Row LeaderType="LEADER_LYNNE_STEINHAUER" ResponseType="RESPONSE_ATTACKED_STRONG_WARMONGER" Response="TXT_KEY_WERRIBEE_ATTACKED_%" Bias="1" />
+    <Row LeaderType="LEADER_LYNNE_STEINHAUER" ResponseType="RESPONSE_ATTACKED_WEAK_WARMONGER" Response="TXT_KEY_WERRIBEE_ATTACKED_%" Bias="1" />
+    <Row LeaderType="LEADER_LYNNE_STEINHAUER" ResponseType="RESPONSE_DEFEATED" Response="TXT_KEY_WERRIBEE_DEFEATED_%" Bias="1" />
+    <Row LeaderType="LEADER_LYNNE_STEINHAUER" ResponseType="RESPONSE_TRADE_ACCEPT_ACCEPTABLE" Response="TXT_KEY_WERRIBEE_ACCEPT_TRADE_%" Bias="1" />
+    <Row LeaderType="LEADER_LYNNE_STEINHAUER" ResponseType="RESPONSE_TRADE_ACCEPT_GENEROUS" Response="TXT_KEY_WERRIBEE_ACCEPT_TRADE_%" Bias="1" />
+    <Row LeaderType="LEADER_LYNNE_STEINHAUER" ResponseType="RESPONSE_TRADE_REJECT_UNACCEPTABLE" Response="TXT_KEY_WERRIBEE_REJECT_TRADE_%" Bias="1" />
+    <Row LeaderType="LEADER_LYNNE_STEINHAUER" ResponseType="RESPONSE_TRADE_REJECT_INSULTING" Response="TXT_KEY_WERRIBEE_REJECT_TRADE_%" Bias="1" />
+    <Row LeaderType="LEADER_LYNNE_STEINHAUER" ResponseType="RESPONSE_PEACE_MADE_BY_HUMAN_GRACIOUS" Response="TXT_KEY_WERRIBEE_PEACE_%" Bias="1" />
+    <Row LeaderType="LEADER_LYNNE_STEINHAUER" ResponseType="RESPONSE_PEACE_MADE_BY_HUMAN_UNGRACIOUS" Response="TXT_KEY_WERRIBEE_PEACE_%" Bias="1" />
+    <Row LeaderType="LEADER_LYNNE_STEINHAUER" ResponseType="RESPONSE_DENOUNCE_LAND" Response="TXT_KEY_WERRIBEE_DENOUNCE_%" Bias="1" />
+    <Row LeaderType="LEADER_LYNNE_STEINHAUER" ResponseType="RESPONSE_DENOUNCE_WARMONGER" Response="TXT_KEY_WERRIBEE_DENOUNCE_%" Bias="1" />
+    <Row LeaderType="LEADER_LYNNE_STEINHAUER" ResponseType="RESPONSE_DENOUNCE_UNFORGIVEABLE" Response="TXT_KEY_WERRIBEE_DENOUNCE_%" Bias="1" />
+    <Row LeaderType="LEADER_LYNNE_STEINHAUER" ResponseType="RESPONSE_GREETING_DENOUNCED_BY_AI" Response="TXT_KEY_WERRIBEE_DENOUNCE_%" Bias="1" />
+  </Diplomacy_Responses>
+</GameData>

@@ -58,6 +58,7 @@ try {
     Write-Output 'Arachnid gameplay simulations passed.'
     Invoke-LuaFile (Join-Path $PSScriptRoot 'TestScorpion.lua')
     Write-Output 'Scorpion Dominion gameplay simulations passed.'
+    Invoke-LuaFile (Join-Path $PSScriptRoot 'TestWerribee.lua')
 } finally {
     [Environment]::CurrentDirectory = $previousDirectory
     [ArachnidLua51]::lua_close($state)
